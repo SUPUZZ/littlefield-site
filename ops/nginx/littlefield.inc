@@ -112,6 +112,17 @@ location ~* ^/assets/.*\.(svg|jpe?g|png|webp|gif|ico)$ {
     add_header Cache-Control "public, max-age=604800" always;
     try_files $uri =404;
 }
+# 落地页用 /release.json 判断 APK/网页版是否已发布，据此解除按钮的禁用态。
+# 它必须能从这里取到，否则按钮会一直是灰的；.com（Pages）上跨域来取，后端已带 CORS。
+location = /release.json {
+    limit_except GET HEAD { deny all; }
+    proxy_pass http://127.0.0.1:8080/game/release.json;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
+}
+
 # /play/ 页面的 CSP 是 script-src 'self'，统计脚本必须由 .cn 自己返回，
 # 不能跟着下面那条 301 跳到 .com，否则会被 CSP 拦掉、统计静默丢失。
 location = /analytics.js {
