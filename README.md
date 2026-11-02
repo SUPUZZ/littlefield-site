@@ -2,10 +2,12 @@
 
 《田野之间》的**静态落地页站点**，一份源码发布到两个地址：
 
-| 域名 | 托管 | 角色 |
+| 域名 | 谁在伺服 | 角色 |
 | --- | --- | --- |
-| <https://game.supuzz.com/> | GitHub Pages | **唯一主站**，canonical 指向这里 |
+| <https://game.supuzz.com/> | 阿里云 ECS：`/var/www/littlefield` | **唯一主站**，canonical 指向这里 |
 | <https://game.supuzz.cn/> | 阿里云 ECS | 页面 301 到 `.com`；只保留游戏、下载、埋点接口 |
+
+> `game.supuzz.com` 的 DNS 目前仍 CNAME 到 `game.supuzz.cn`，两个域名都由同一台机器伺服。换成 GitHub Pages 是可选项（更快、零运维），需要时再动，见文末。
 
 中文在根目录、英文在 `en/`。
 
@@ -15,7 +17,7 @@
 
 - 纯静态 HTML + CSS + 原生 JS，**没有构建步骤**。
 - `scripts/stage.sh` 按白名单把站点文件复制到 `dist/`，两个部署目标都上传 `dist/`。
-- 部署：push `main` → 自检 → 并行发 GitHub Pages 和 ECS。
+- 发布：`bash scripts/deploy.sh`，一条命令（会先跑链接自检）。没有 CI、没有密钥、没有构建。
 
 ## 目录结构
 
@@ -38,7 +40,7 @@
 ├── ops/nginx/                  # game.supuzz.cn 的 Nginx 配置与切换说明
 ├── scripts/stage.sh            # 组装 dist/（白名单，两个目标共用）
 ├── scripts/deploy.sh           # 上传 dist/ 到 ECS
-└── scripts/check-links.py      # 链接与 sitemap 自检（CI 前置）
+└── scripts/check-links.py      # 链接与 sitemap 自检
 ```
 
 ## 与后端的边界
@@ -90,36 +92,30 @@ python3 scripts/check-links.py   # 站内链接 + sitemap 地址是否都指向�
 bash scripts/stage.sh            # 生成 dist/，可顺带检查上线文件清单
 ```
 
-CI 在每次部署前跑同一个脚本，失败就不会上线。
+`deploy.sh` 会先跑它，不通过就不上传。
 
-## 部署
+## 发布
 
-**自动**：push 到 `main` → 自检 → 并行部署两个目标（`.github/workflows/deploy.yml`，也可在 Actions 页手动触发）：
-
-| 目标 | 需要什么 |
-| --- | --- |
-| GitHub Pages → `game.supuzz.com` | 仓库 Settings → Pages → Source 选 **GitHub Actions**，Custom domain 填 `game.supuzz.com`；DNS 上加 `game.supuzz.com CNAME supuzz.github.io` |
-| ECS → `game.supuzz.cn` | 下面这些 Secrets |
-
-ECS 目标需要仓库 Secrets：
-
-| Secret | 必填 | 说明 |
-| --- | --- | --- |
-| `DEPLOY_SSH_HOST` | 是 | ECS 公网 IP 或域名 |
-| `DEPLOY_SSH_USER` | 是 | 一般 `root` |
-| `DEPLOY_SSH_PRIVATE_KEY` | 是 | 对应公钥已写入服务器 `authorized_keys` 的私钥 |
-| `DEPLOY_SSH_PORT` | 否 | 默认 22 |
-| `DEPLOY_REMOTE_PATH` | 否 | 默认 `/var/www/littlefield`，必须与 Nginx `root` 一致 |
-
-**手动**（首次上线、或 CI 不可用时）：
+一条命令：
 
 ```bash
-cp deploy.env.example .env.deploy   # 填写 ECS 地址与目录，.env.deploy 不入库
-bash scripts/stage.sh && bash scripts/deploy.sh   # 只发 ECS
-bash scripts/deploy.sh --reload     # 上传后顺便 nginx -t && reload
+bash scripts/deploy.sh
 ```
 
-Nginx 配置见 `ops/nginx/`，**不随 CI 自动下发**（改配置风险高，手动改完 `nginx -t` 再 reload）。首次切换步骤见 [ops/README.md](ops/README.md)。
+它会依次做：链接自检 → 组装 `dist/` → 打包上传 → 服务器上换目录（旧的留作 `.prev` 可回滚）。
+
+第一次用需要 `cp deploy.env.example .env.deploy` 填服务器地址（该文件不入库）。加 `--reload` 可在上传后顺带 `nginx -t && systemctl reload nginx`。
+
+Nginx 配置在 `ops/nginx/`，**不会自动下发**——改配置要手动替换并 `nginx -t`，见 [ops/README.md](ops/README.md)。
+
+## 以后想换成 GitHub Pages
+
+可行且更省事，但需要两件手动操作，缺一不可：
+
+1. 仓库 Settings → Pages → Source 选 **GitHub Actions**，Custom domain 填 `game.supuzz.com`；
+2. DNS 把 `game.supuzz.com` 的 CNAME 从 `game.supuzz.cn` 改成 `supuzz.github.io`。
+
+⚠️ 顺序不能反：**先把 Pages 开起来再改 DNS**，否则 `game.supuzz.com` 会直接打不开。`.cn` 上的 `/play/`、`/downloads/`、`/api/`、`/analytics.js` 不受影响，一直留在服务器上。
 
 ## 发布游戏新版本
 

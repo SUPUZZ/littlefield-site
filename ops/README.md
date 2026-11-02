@@ -4,7 +4,7 @@
 
 | 域名 | 托管 | 谁在管 |
 | --- | --- | --- |
-| `game.supuzz.com` | GitHub Pages | 仓库 Settings → Pages |
+| `game.supuzz.com` | 阿里云 ECS + Nginx（DNS 暂未切 Pages） | 站点根目录 `/var/www/littlefield` |
 | `game.supuzz.cn` | 阿里云 ECS + Nginx | 本目录的配置；页面 301 到 `.com` |
 
 `.cn` 现在只承担游戏与接口：`/play/`、`/downloads/`、`/api/`、`/analytics.js`。其余路径在 `location /` 里按 `$host` 判断后 301 到 `.com`；`.com` 自身（DNS 切换前仍指向本机）不会进这个分支，所以不会循环。
@@ -22,7 +22,7 @@ cp deploy.env.example .env.deploy   # 填写 ECS 地址，默认目录 /var/www/
 bash scripts/deploy.sh
 ```
 
-之后交给 CI：把 `DEPLOY_SSH_HOST` / `DEPLOY_SSH_USER` / `DEPLOY_SSH_PRIVATE_KEY`（以及可选的 `DEPLOY_SSH_PORT`、`DEPLOY_REMOTE_PATH`）配进仓库 Secrets，push 到 `main` 就会自动上传。
+之后每次发布都是同一条命令：`bash scripts/deploy.sh`。
 
 确认服务器上有：
 
@@ -30,7 +30,7 @@ bash scripts/deploy.sh
 ls -la /var/www/littlefield/index.html /var/www/littlefield/en/index.html
 ```
 
-> Nginx 配置**不随 CI 下发**，第 2 步始终是手动操作。
+> Nginx 配置**不随部署脚本下发**，第 2 步始终是手动操作。
 
 ## 关于 OPTIONS
 

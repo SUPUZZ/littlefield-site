@@ -44,6 +44,11 @@ done
 TARGET="${DEPLOY_SSH_USER}@${DEPLOY_SSH_HOST}"
 SSH=(ssh -p "$DEPLOY_SSH_PORT" "$TARGET")
 
+# 发布前先自检，链接断了就别上线
+if command -v python3 >/dev/null 2>&1; then
+  python3 "$ROOT/scripts/check-links.py"
+fi
+
 echo "==> 上传到 ${TARGET}:${DEPLOY_REMOTE_PATH}"
 
 # 先解到 .next，再整体换目录，避免上传中断时出现半套页面。
