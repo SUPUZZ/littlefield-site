@@ -40,19 +40,9 @@ echo "==> 上传到 ${TARGET}:${DEPLOY_REMOTE_PATH}"
 # 先解到 .next，再整体换目录，避免上传中断时出现半套页面。
 "${SSH[@]}" "set -e; mkdir -p '${DEPLOY_REMOTE_PATH}'; rm -rf '${DEPLOY_REMOTE_PATH}.next'; mkdir -p '${DEPLOY_REMOTE_PATH}.next'"
 
-COPYFILE_DISABLE=1 tar czf - \
-  --exclude=./.git \
-  --exclude=./.github \
-  --exclude=./ops \
-  --exclude=./scripts \
-  --exclude=./.env.deploy \
-  --exclude=./deploy.env.example \
-  --exclude=./.gitignore \
-  --exclude=./README.md \
-  --exclude=./AGENTS.md \
-  --exclude=.DS_Store \
-  --exclude='._*' \
-  -C "$ROOT" . | "${SSH[@]}" "tar xzf - --no-same-owner -C '${DEPLOY_REMOTE_PATH}.next'"
+# 只上传 dist/（由 scripts/stage.sh 生成的发布目录）
+bash "$ROOT/scripts/stage.sh"
+COPYFILE_DISABLE=1 tar czf - -C "$ROOT/dist" . | "${SSH[@]}" "tar xzf - --no-same-owner -C '${DEPLOY_REMOTE_PATH}.next'"
 
 "${SSH[@]}" "set -e
 if [ -d '${DEPLOY_REMOTE_PATH}' ]; then rm -rf '${DEPLOY_REMOTE_PATH}.prev'; mv '${DEPLOY_REMOTE_PATH}' '${DEPLOY_REMOTE_PATH}.prev'; fi

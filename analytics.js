@@ -1,6 +1,8 @@
 (() => {
   'use strict';
-  const endpoint = '/api';
+  // .com 是 GitHub Pages 上的纯静态镜像，接口在 .cn；.cn 自身仍走同源，避免多余预检。
+  const apiOrigin = location.hostname === 'game.supuzz.cn' ? '' : 'https://game.supuzz.cn';
+  const endpoint = apiOrigin + '/api';
   const uuid = () => crypto.randomUUID ? crypto.randomUUID() : '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
   const validUuid = value => /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value || '');
   let visitorId;
@@ -36,7 +38,7 @@
     if (pageViewId && duration > 0) send(endpoint + '/pageview/' + encodeURIComponent(pageViewId) + '/duration', { duration });
   };
   fetch(endpoint + '/pageview', { method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
-    body: JSON.stringify({ brandName: 'littlefield', domain: 'game.supuzz.cn', pageUrl: 'https://game.supuzz.cn' + location.pathname + location.search, referrer: document.referrer, userAgent: navigator.userAgent, visitorId })
+    body: JSON.stringify({ brandName: 'littlefield', domain: location.hostname, pageUrl: location.origin + location.pathname + location.search, referrer: document.referrer, userAgent: navigator.userAgent, visitorId })
   }).then(response => response.ok ? response.json() : null).then(data => { pageViewId = data?.id; flush(); }).catch(() => {});
   document.addEventListener('visibilitychange', () => { flush(); if (!document.hidden && visibleSince === null) visibleSince = performance.now(); });
   window.addEventListener('pagehide', () => { flush(); visibleSince = null; });

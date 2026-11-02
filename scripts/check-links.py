@@ -22,7 +22,9 @@ from urllib.parse import urlparse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BACKEND_PREFIXES = ("/play", "/downloads", "/api")
-SKIP_SCHEMES = ("http://", "https://", "//", "mailto:", "tel:", "data:", "javascript:")
+SKIP_SCHEMES = ("//", "mailto:", "tel:", "data:", "javascript:")
+# 两个域名伺服同一份文件；.cn 额外承载后端路径，所以按路径判断而不是按域名。
+OWN_HOSTS = {"game.supuzz.cn", "game.supuzz.com"}
 
 errors: list[str] = []
 
@@ -32,8 +34,14 @@ def is_backend_path(path: str) -> bool:
 
 
 def resolve(page: str, url: str) -> str | None:
-    """把站内 URL 解析成仓库内的绝对文件路径；返回 None 表示由后端提供。"""
-    path = url.split("#")[0].split("?")[0]
+    """把站内 URL 解析成仓库内的绝对文件路径；返回 None 表示由后端提供或站外链接。"""
+    parsed = urlparse(url)
+    if parsed.scheme in ("http", "https"):
+        if parsed.netloc not in OWN_HOSTS:
+            return None  # 站外链接，不管
+        path = parsed.path
+    else:
+        path = url.split("#")[0].split("?")[0]
     if not path:
         return None  # 纯锚点
     if path.startswith("/"):
@@ -85,8 +93,14 @@ def check_sitemap() -> int:
     for loc in tree.getroot().iterfind(".//s:loc", ns):
         url = (loc.text or "").strip()
         parsed = urlparse(url)
-        if parsed.netloc != "game.supuzz.cn":
-            errors.append(f"sitemap 域名不符（应为 game.supuzz.cn）: {url}")
+        if parsed.netloc not in OWN_HOSTS:
+            errors.append(f"sitemap 域名不属于本站: {url}")
+            continue
+        # 后端地址（/play/ 等）只存在于 .cn，不能写成 .com
+        if is_backend_path(parsed.path or "/"):
+            count += 1
+            if parsed.netloc != "game.supuzz.cn":
+                errors.append(f"sitemap 中的后端地址必须是 game.supuzz.cn: {url}")
             continue
         target = resolve("sitemap.xml", parsed.path or "/")
         count += 1

@@ -40,10 +40,13 @@ location /downloads/ {
 }
 
 # ------------------------------------------------------------------
-# 埋点与游戏 API（与拆分前保持一致，勿随页面改动调整）
+# 埋点与游戏 API
+# 落地页自 2026-11 起主域是 game.supuzz.com（GitHub Pages），埋点跨域上报，
+# 因此下面三个 location 必须放行 OPTIONS，否则浏览器预检会被 403 拦掉，
+# 页面能用但统计全丢。OPTIONS 由 @fastify/cors 直接应答 204。
 # ------------------------------------------------------------------
 location = /api/pageview {
-    limit_except POST { deny all; }
+    limit_except POST OPTIONS { deny all; }
     limit_req zone=littlefield_analytics burst=20 nodelay;
     limit_req_status 429;
     client_max_body_size 16k;
@@ -54,7 +57,7 @@ location = /api/pageview {
     proxy_set_header X-Forwarded-Proto $scheme;
 }
 location ~ ^/api/pageview/[A-Za-z0-9_-]+/duration$ {
-    limit_except POST { deny all; }
+    limit_except POST OPTIONS { deny all; }
     limit_req zone=littlefield_analytics burst=20 nodelay;
     limit_req_status 429;
     client_max_body_size 4k;
@@ -65,7 +68,7 @@ location ~ ^/api/pageview/[A-Za-z0-9_-]+/duration$ {
     proxy_set_header X-Forwarded-Proto $scheme;
 }
 location = /api/game/events {
-    limit_except POST { deny all; }
+    limit_except POST OPTIONS { deny all; }
     limit_req zone=littlefield_analytics burst=20 nodelay;
     limit_req_status 429;
     client_max_body_size 4k;

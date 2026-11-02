@@ -4,4 +4,4 @@ Disallow: /api/
 Disallow: /downloads/
 Disallow: /privacy.html
 Disallow: /en/privacy.html
-Sitemap: https://game.supuzz.cn/sitemap.xml
+Sitemap: https://game.supuzz.com/sitemap.xml

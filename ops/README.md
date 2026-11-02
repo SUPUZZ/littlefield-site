@@ -1,6 +1,15 @@
 # 上线切换说明
 
-拆分后，`game.supuzz.cn` 的 `/` 由 Nginx 直接读磁盘，`/play/`、`/downloads/`、`/api/` 仍然转发给 `feedback-server`。切换分三步，**顺序不能反**（先把文件放上去，再改 Nginx，否则首页会 404）。
+现状（2026-11 起）：
+
+| 域名 | 托管 | 谁在管 |
+| --- | --- | --- |
+| `game.supuzz.com` | GitHub Pages | 仓库 Settings → Pages |
+| `game.supuzz.cn` | 阿里云 ECS + Nginx | 本目录的配置 |
+
+`.cn` 上，`/` 由 Nginx 直接读 `/var/www/littlefield`，`/play/`、`/downloads/`、`/api/` 转发给 `feedback-server`。首次从"后端伺服静态页"切到"Nginx 读磁盘"分三步，**顺序不能反**（先把文件放上去，再改 Nginx，否则首页会 404）。
+
+> 移动端相关：`/play/` 与 `/downloads/` 的 `proxy_pass` 必须带 `/game/` 前缀（后端整个游戏插件挂在 `/game` 下）。写错会 404，且只有线上才暴露得出来。
 
 ## 1. 放静态文件
 
@@ -20,6 +29,21 @@ ls -la /var/www/littlefield/index.html /var/www/littlefield/en/index.html
 ```
 
 > Nginx 配置**不随 CI 下发**，第 2 步始终是手动操作。
+
+## 关于 OPTIONS
+
+`.com` 是 Pages 上的纯静态站，埋点跨域上报到 `.cn`，浏览器会先发 `OPTIONS` 预检。`littlefield.inc` 里三个埋点 location 的 `limit_except` 必须是 `POST OPTIONS`，否则预检 403、统计静默丢失（页面本身正常，不容易发现）。
+
+验证方式：
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' -X OPTIONS \
+  -H 'Origin: https://game.supuzz.com' \
+  -H 'Access-Control-Request-Method: POST' \
+  -H 'Access-Control-Request-Headers: content-type' \
+  https://game.supuzz.cn/api/game/events
+# 期望 204，不是 403
+```
 
 ## 2. 换 Nginx 配置
 
