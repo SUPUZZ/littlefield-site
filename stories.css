@@ -1,0 +1,29 @@
+.stories{padding-block:20px 88px}
+.story-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.story-cards article{display:flex;flex-direction:column;padding:30px;border:1px solid var(--line);border-radius:10px;background:#fbfbf4}
+.story-cards .eyebrow{color:var(--muted);font-size:10px;margin-bottom:18px}
+.story-cards h3{font-size:20px;line-height:1.7}
+.story-cards h3 a:hover,.story a:not(.button):hover{text-decoration:underline;text-underline-offset:4px}
+.story-cards article>p:not(.eyebrow){font-size:14px;line-height:1.9;color:var(--muted);margin:0 0 24px}
+.story-card-link{margin-top:auto;font-size:13px;font-weight:600;color:var(--green);line-height:1.8}
+.story-card-link span{margin-left:8px}
+.story{max-width:840px;padding-block:30px 80px;overflow-wrap:break-word}
+.breadcrumbs{font-size:12px;line-height:1.9;color:var(--muted);margin-bottom:44px}
+.breadcrumbs a{text-decoration:underline;text-underline-offset:3px}
+.story-heading .eyebrow{color:var(--green);margin-bottom:18px}
+.story h1{font-size:clamp(30px,4vw,44px);line-height:1.5;letter-spacing:0;margin-bottom:24px}
+.story-intro{font-size:17px;line-height:2;color:var(--muted)}
+.story-toc{margin:32px 0 40px;padding:24px 30px;background:#e7ecdc;border-radius:10px;font-size:14px;line-height:2}
+.story-toc ol{padding-left:22px;margin-bottom:0}
+.story article section{margin-block:38px;scroll-margin-top:30px}
+.story h2{font-family:inherit;font-size:24px;font-weight:600;line-height:1.7;letter-spacing:0}
+.story section p{font-size:16px;line-height:2.1;color:var(--muted);margin-top:14px}
+.story section a{color:var(--green);text-decoration:underline;text-underline-offset:4px}
+.story-related{border-top:1px solid var(--line);padding-top:30px;margin-top:48px}
+.story-related h2{font-size:20px}
+.story-related ul{padding-left:20px;font-size:14px;line-height:2.1}
+.story-related li{margin-bottom:12px}
+.story-start{margin-top:35px;padding:26px;background:#e7ecdc;border-radius:10px;display:flex;flex-wrap:wrap;gap:12px}
+.story-start p{flex-basis:100%;font-size:15px;line-height:1.9;margin:0 0 6px}
+.hero .eyebrow{letter-spacing:1px;line-height:1.9}
+@media(max-width:760px){.stories{padding-block:12px 48px}.stories .section-heading{display:block}.stories h2{font-size:30px}.stories .section-heading>p{margin-top:18px;min-width:0}.story-cards{grid-template-columns:1fr;gap:16px}.story-cards article{padding:24px}.story-cards h3{font-size:19px}.story{padding-block:16px 50px}.breadcrumbs{margin-bottom:32px}.story-intro{font-size:16px}.story-toc{padding:20px}.story h2{font-size:21px}.story section p{font-size:15px}.story-start{padding:22px}.story-start .button{width:100%}}

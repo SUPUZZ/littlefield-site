@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#fff8e8">
+  <title>田园图鉴 · 蔬菜 / 农田 / 建筑 / 树木 / 装饰 — 田野之间 Little Field</title>
+  <meta name="description" content="田野之间完整内容图鉴：4 种蔬菜的种子价、售价与生长时间，3 种可布置菜田，13 种按等级解锁的建筑，8 种树木与 7 种庭院装饰，含造价、占地与解锁条件。">
+  <link rel="canonical" href="https://game.supuzz.cn/guide.html">
+  <link rel="alternate" hreflang="zh-CN" href="https://game.supuzz.cn/guide.html">
+  <link rel="alternate" hreflang="en" href="https://game.supuzz.cn/en/guide.html">
+  <link rel="alternate" hreflang="x-default" href="https://game.supuzz.cn/guide.html">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="田园图鉴 · 田野之间 LITTLE FIELD">
+  <meta property="og:description" content="作物、农田、建筑、树木、装饰一次查全：造价、解锁等级、效果与实际收益都在这里。">
+  <meta property="og:url" content="https://game.supuzz.cn/guide.html">
+  <meta property="og:image" content="https://game.supuzz.cn/assets/farm-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/site.css">
+  <script defer src="/analytics.js"></script>
+  <script defer src="/site.js"></script>
+  <link rel="stylesheet" href="/comic.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <svg class="sprite" aria-hidden="true" focusable="false"><defs>
+    <symbol id="i-carrot" viewBox="0 0 48 48">
+      <path d="M24 20c-3-4-2-9 0-13 2 4 3 9 0 13z" fill="#6ea24f"/>
+      <path d="M24 20c-5-2-9-1-12 1 4 1 8 2 12-1z" fill="#8cbe66"/>
+      <path d="M24 20c5-2 9-1 12 1-4 1-8 2-12-1z" fill="#8cbe66"/>
+      <path d="M17 21h14l-6 21h-2z" fill="#e2893c"/>
+      <path d="M21.5 25l-1.2 3M24.5 25l0 3M27.5 25l1.2 3M22.5 31l-1 3M25.5 31l1 3" fill="none" stroke="#c4712c" stroke-width="1.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-cabbage" viewBox="0 0 48 48">
+      <path d="M10 30c0-8 7-14 14-14s14 6 14 14c0 6-6 10-14 10S10 36 10 30z" fill="#7fb04f"/>
+      <circle cx="24" cy="29" r="9" fill="#a9cf76"/>
+      <circle cx="24" cy="29" r="5" fill="#d7e6a6"/>
+      <path d="M16 34c-3 2-5 5-6 8h28c-1-3-3-6-6-8z" fill="#6d9b45"/>
+      <path d="M24 16c-4 2-6 5-7 8M24 16c4 2 6 5 7 8" fill="none" stroke="#6d9b45" stroke-width="1.4"/>
+    </symbol>
+    <symbol id="i-pumpkin" viewBox="0 0 48 48">
+      <ellipse cx="17" cy="29" rx="9" ry="13" fill="#d17f2a"/>
+      <ellipse cx="31" cy="29" rx="9" ry="13" fill="#d17f2a"/>
+      <ellipse cx="24" cy="29" rx="8" ry="13.5" fill="#e8942f"/>
+      <rect x="22" y="13" width="4" height="8" rx="2" fill="#6d8f42"/>
+      <path d="M26 15c3-3 7-3 9-1-2 3-6 4-9 1z" fill="#7fa34c"/>
+      <path d="M24 21v18" fill="none" stroke="#c4712c" stroke-width="1.2"/>
+    </symbol>
+    <symbol id="i-wheat" viewBox="0 0 48 48">
+      <path d="M24 42V15" fill="none" stroke="#c2a04a" stroke-width="2.4"/>
+      <g fill="#e6c860">
+        <ellipse cx="18" cy="21" rx="3" ry="5.6" transform="rotate(-32 18 21)"/>
+        <ellipse cx="30" cy="21" rx="3" ry="5.6" transform="rotate(32 30 21)"/>
+        <ellipse cx="18.5" cy="29" rx="3" ry="5.6" transform="rotate(-32 18.5 29)"/>
+        <ellipse cx="29.5" cy="29" rx="3" ry="5.6" transform="rotate(32 29.5 29)"/>
+        <ellipse cx="24" cy="15" rx="3" ry="6"/>
+      </g>
+      <path d="M24 42c-4 0-6-2-8-5M24 42c4 0 6-2 8-5" fill="none" stroke="#c2a04a" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-field-small" viewBox="0 0 48 48">
+      <rect x="12" y="12" width="24" height="24" rx="4" fill="#9a7b57"/>
+      <path d="M12 20h24M12 28h24" fill="none" stroke="#7e6444" stroke-width="2"/>
+      <g fill="#8fbf5f"><circle cx="19" cy="17" r="2"/><circle cx="29" cy="25" r="2"/><circle cx="20" cy="33" r="2"/></g>
+    </symbol>
+    <symbol id="i-field" viewBox="0 0 48 48">
+      <rect x="7" y="7" width="34" height="34" rx="4" fill="#9a7b57"/>
+      <path d="M7 16h34M7 25h34M7 34h34" fill="none" stroke="#7e6444" stroke-width="2"/>
+      <g fill="#8fbf5f"><circle cx="15" cy="12" r="2"/><circle cx="33" cy="21" r="2"/><circle cx="21" cy="30" r="2"/><circle cx="34" cy="38" r="2"/></g>
+    </symbol>
+    <symbol id="i-field-long" viewBox="0 0 48 48">
+      <rect x="13" y="5" width="22" height="38" rx="4" fill="#9a7b57"/>
+      <path d="M13 15h22M13 25h22M13 35h22" fill="none" stroke="#7e6444" stroke-width="2"/>
+      <g fill="#8fbf5f"><circle cx="20" cy="10" r="2"/><circle cx="28" cy="20" r="2"/><circle cx="20" cy="30" r="2"/><circle cx="28" cy="40" r="2"/></g>
+    </symbol>
+    <symbol id="i-cottage" viewBox="0 0 48 48">
+      <path d="M8 22 24 8l16 14H8z" fill="#b5643f"/>
+      <rect x="11" y="21" width="26" height="19" rx="2" fill="#f3ead6"/>
+      <rect x="20" y="28" width="8" height="12" rx="1" fill="#a9754d"/>
+      <rect x="14" y="24" width="6" height="6" rx="1" fill="#9ac6d8"/>
+      <rect x="29" y="24" width="6" height="6" rx="1" fill="#9ac6d8"/>
+      <rect x="25" y="11" width="4" height="8" rx="1" fill="#8a6a45"/>
+    </symbol>
+    <symbol id="i-barn" viewBox="0 0 48 48">
+      <path d="M7 21 15 10h18l8 11z" fill="#a8503a"/>
+      <rect x="9" y="20" width="30" height="20" rx="2" fill="#e6d9bd"/>
+      <rect x="19" y="27" width="10" height="13" rx="1" fill="#8f5f3e"/>
+      <path d="M19 27l10 13M29 27L19 40" fill="none" stroke="#efe5cf" stroke-width="1.6"/>
+      <rect x="13" y="23" width="4" height="4" rx="1" fill="#9ac6d8"/>
+      <rect x="31" y="23" width="4" height="4" rx="1" fill="#9ac6d8"/>
+    </symbol>
+    <symbol id="i-well" viewBox="0 0 48 48">
+      <path d="M8 16 24 6l16 10H8z" fill="#a36a44"/>
+      <rect x="11" y="16" width="3" height="13" fill="#8a6a45"/>
+      <rect x="34" y="16" width="3" height="13" fill="#8a6a45"/>
+      <rect x="12" y="28" width="24" height="12" rx="3" fill="#9aa394"/>
+      <rect x="14" y="31" width="20" height="6" rx="2" fill="#7fb4cd"/>
+      <rect x="22" y="16" width="4" height="14" fill="#8a6a45"/>
+      <path d="M19 22h10" fill="none" stroke="#6d5638" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-sprinkler" viewBox="0 0 48 48">
+      <rect x="20" y="30" width="8" height="10" rx="2" fill="#8e9a86"/>
+      <rect x="22" y="18" width="4" height="13" rx="1" fill="#6f7d67"/>
+      <path d="M16 15h16" fill="none" stroke="#6f7d67" stroke-width="2.6" stroke-linecap="round"/>
+      <g fill="#7fb4cd"><circle cx="13" cy="21" r="2.4"/><circle cx="35" cy="21" r="2.4"/><circle cx="19" cy="27" r="2"/><circle cx="29" cy="27" r="2"/></g>
+      <rect x="14" y="40" width="20" height="3" rx="1.5" fill="#c8d3bb"/>
+    </symbol>
+    <symbol id="i-greenhouse" viewBox="0 0 48 48">
+      <path d="M8 38V22l16-12 16 12v16z" fill="#cfe6dc"/>
+      <path d="M8 38V22l16-12 16 12v16z" fill="none" stroke="#7f9b8c" stroke-width="2"/>
+      <path d="M24 10v28M8 22h32" fill="none" stroke="#7f9b8c" stroke-width="1.6"/>
+      <g fill="#6fa24f"><rect x="14" y="30" width="6" height="8" rx="2"/><rect x="28" y="30" width="6" height="8" rx="2"/><circle cx="17" cy="28" r="2.5"/><circle cx="31" cy="28" r="2.5"/></g>
+      <rect x="6" y="38" width="36" height="3" rx="1.5" fill="#a8b79c"/>
+    </symbol>
+    <symbol id="i-harvester" viewBox="0 0 48 48">
+      <rect x="12" y="16" width="20" height="13" rx="2" fill="#d9b344"/>
+      <rect x="27" y="20" width="9" height="9" rx="2" fill="#f0e2c0"/>
+      <circle cx="19" cy="35" r="6" fill="#40473d"/>
+      <circle cx="19" cy="35" r="2.4" fill="#8e9a86"/>
+      <circle cx="34" cy="35" r="4.5" fill="#40473d"/>
+      <rect x="4" y="28" width="9" height="6" rx="1" fill="#b9c3ad"/>
+      <path d="M5 28l2-4M9 28l2-4M13 28l2-4" fill="none" stroke="#8e9a86" stroke-width="1.6"/>
+      <rect x="15" y="9" width="4" height="8" rx="1" fill="#8e9a86"/>
+    </symbol>
+    <symbol id="i-workshop" viewBox="0 0 48 48">
+      <path d="M7 22 24 11l17 11H7z" fill="#8d6a49"/>
+      <rect x="10" y="21" width="28" height="19" rx="2" fill="#dfd0ae"/>
+      <rect x="14" y="28" width="12" height="12" rx="1" fill="#a9805a"/>
+      <circle cx="33" cy="29" r="5" fill="none" stroke="#6f7d67" stroke-width="2.6"/>
+      <path d="M33 23v-2M33 37v-2M27 29h-2M39 29h2" fill="none" stroke="#6f7d67" stroke-width="2.2"/>
+    </symbol>
+    <symbol id="i-logistics" viewBox="0 0 48 48">
+      <rect x="5" y="18" width="20" height="14" rx="2" fill="#e0e5d3"/>
+      <path d="M25 22h8l6 6v4H25z" fill="#c8d3bb"/>
+      <rect x="9" y="22" width="6" height="6" rx="1" fill="#9ac6d8"/>
+      <circle cx="15" cy="36" r="4" fill="#40473d"/>
+      <circle cx="34" cy="36" r="4" fill="#40473d"/>
+      <rect x="26" y="11" width="8" height="11" rx="1" fill="#c98b3c"/>
+      <path d="M30 14v5M28.5 16.5h3" fill="none" stroke="#7a5320" stroke-width="1.6"/>
+      <rect x="5" y="32" width="30" height="2" fill="#b7c2aa"/>
+    </symbol>
+    <symbol id="i-dorm" viewBox="0 0 48 48">
+      <rect x="11" y="8" width="26" height="34" rx="2" fill="#efeadd"/>
+      <rect x="11" y="8" width="26" height="5" fill="#b98a5e"/>
+      <g fill="#9ac6d8"><rect x="15" y="16" width="6" height="6" rx="1"/><rect x="27" y="16" width="6" height="6" rx="1"/><rect x="15" y="26" width="6" height="6" rx="1"/><rect x="27" y="26" width="6" height="6" rx="1"/></g>
+      <rect x="20" y="36" width="8" height="6" rx="1" fill="#a9754d"/>
+    </symbol>
+    <symbol id="i-research" viewBox="0 0 48 48">
+      <rect x="20" y="8" width="8" height="5" rx="1" fill="#8e9a86"/>
+      <path d="M20 13h8v10l7 14a3 3 0 0 1-3 4H16a3 3 0 0 1-3-4l7-14z" fill="#dfe8dd" stroke="#7f9b8c" stroke-width="1.8"/>
+      <path d="M15 30h18l4 7a3 3 0 0 1-3 4H14a3 3 0 0 1-3-4z" fill="#7fc06a"/>
+      <circle cx="21" cy="36" r="1.8" fill="#e9f5e4"/><circle cx="28" cy="38" r="1.4" fill="#e9f5e4"/>
+    </symbol>
+    <symbol id="i-hq" viewBox="0 0 48 48">
+      <rect x="13" y="14" width="22" height="30" rx="2" fill="#e6e9dd"/>
+      <rect x="17" y="5" width="14" height="11" rx="2" fill="#cfd6c4"/>
+      <path d="M24 5V2" fill="none" stroke="#6f7d67" stroke-width="2"/>
+      <g fill="#9ac6d8"><rect x="17" y="18" width="5" height="5" rx="1"/><rect x="26" y="18" width="5" height="5" rx="1"/><rect x="17" y="27" width="5" height="5" rx="1"/><rect x="26" y="27" width="5" height="5" rx="1"/></g>
+      <rect x="20" y="37" width="8" height="7" rx="1" fill="#7f8f79"/>
+      <rect x="12" y="44" width="24" height="2" rx="1" fill="#b7c2aa"/>
+    </symbol>
+    <symbol id="i-boathouse" viewBox="0 0 48 48">
+      <path d="M8 25h32v3H8z" fill="#a9805a"/>
+      <path d="M10 28h28v3H10z" fill="#8a6a45"/>
+      <rect x="12" y="22" width="4" height="3" fill="#8a6a45"/>
+      <rect x="32" y="22" width="4" height="3" fill="#8a6a45"/>
+      <path d="M10 33c6 3 22 3 28 0 0 4-6 7-14 7s-14-3-14-7z" fill="#c9a86a"/>
+      <path d="M25 21V13l8 8z" fill="#f3ead6"/>
+      <path d="M25 21l8-8v-3l-8 8z" fill="#dcd2ba"/>
+      <path d="M4 41c4 2 6 0 10 2s6-2 10 0 6 2 10 0 6-2 6-2" fill="none" stroke="#7fb4cd" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-fishmarket" viewBox="0 0 48 48">
+      <path d="M6 17h36l-4 10H10z" fill="#d97b6c"/>
+      <rect x="10" y="14" width="28" height="4" fill="#f2e3dc"/>
+      <rect x="11" y="27" width="26" height="15" rx="2" fill="#f3ead6"/>
+      <rect x="15" y="31" width="10" height="11" rx="1" fill="#9ac6d8"/>
+      <path d="M28 34c3-3 8-3 9 0-3 3-8 3-9 0z" fill="#6fa8bf"/>
+      <path d="M37 34l4-3v6z" fill="#6fa8bf"/>
+      <circle cx="31" cy="35" r="1" fill="#fff"/>
+    </symbol>
+    <symbol id="i-oak" viewBox="0 0 48 48">
+      <rect x="21" y="26" width="6" height="16" rx="2" fill="#8a6a45"/>
+      <circle cx="24" cy="20" r="14" fill="#5f8a4e"/>
+      <circle cx="15" cy="24" r="9" fill="#6f9a56"/>
+      <circle cx="33" cy="24" r="9" fill="#6f9a56"/>
+      <circle cx="20" cy="15" r="7" fill="#79a45e"/>
+    </symbol>
+    <symbol id="i-birch" viewBox="0 0 48 48">
+      <rect x="22" y="20" width="4" height="22" rx="1.6" fill="#efe9dd"/>
+      <path d="M22 26h4M22 33h4M22 39h4" fill="none" stroke="#a89b86" stroke-width="1.6"/>
+      <ellipse cx="24" cy="16" rx="12" ry="11" fill="#8cbf66"/>
+      <ellipse cx="18" cy="20" rx="7" ry="6" fill="#9bcc72"/>
+      <circle cx="30" cy="14" r="5" fill="#a3d17a"/>
+    </symbol>
+    <symbol id="i-pine" viewBox="0 0 48 48">
+      <rect x="22" y="34" width="4" height="10" rx="1.5" fill="#8a6a45"/>
+      <path d="M24 4 33 18H15z" fill="#4f7a45"/>
+      <path d="M24 14 35 27H13z" fill="#56854a"/>
+      <path d="M24 24 37 36H11z" fill="#5e8f50"/>
+    </symbol>
+    <symbol id="i-willow" viewBox="0 0 48 48">
+      <rect x="21" y="24" width="6" height="18" rx="2" fill="#8a6a45"/>
+      <path d="M8 25c0-9 7-17 16-17s16 8 16 17z" fill="#86b862"/>
+      <path d="M12 25v10M18 25v13M24 25v15M30 25v13M36 25v10" fill="none" stroke="#7aa856" stroke-width="2.4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-cherry" viewBox="0 0 48 48">
+      <rect x="21" y="26" width="6" height="16" rx="2" fill="#8a6a45"/>
+      <circle cx="16" cy="22" r="9" fill="#f0b6c8"/>
+      <circle cx="32" cy="22" r="9" fill="#f2c0d0"/>
+      <circle cx="24" cy="16" r="10" fill="#f6cad7"/>
+      <g fill="#e08aa4"><circle cx="18" cy="18" r="1.6"/><circle cx="29" cy="20" r="1.6"/><circle cx="24" cy="26" r="1.6"/></g>
+    </symbol>
+    <symbol id="i-fruit" viewBox="0 0 48 48">
+      <rect x="21" y="26" width="6" height="16" rx="2" fill="#8a6a45"/>
+      <circle cx="24" cy="20" r="13" fill="#6f9a56"/>
+      <circle cx="16" cy="23" r="8" fill="#79a45e"/>
+      <circle cx="32" cy="23" r="8" fill="#79a45e"/>
+      <g fill="#d9534f"><circle cx="17" cy="18" r="2.6"/><circle cx="31" cy="21" r="2.6"/><circle cx="24" cy="26" r="2.6"/><circle cx="27" cy="13" r="2.6"/></g>
+    </symbol>
+    <symbol id="i-bamboo" viewBox="0 0 48 48">
+      <g fill="#8fb65a"><rect x="14" y="8" width="4" height="34" rx="2"/><rect x="22" y="4" width="4" height="38" rx="2"/><rect x="30" y="10" width="4" height="32" rx="2"/></g>
+      <path d="M14 18h4M14 28h4M22 12h4M22 22h4M22 32h4M30 20h4M30 30h4" fill="none" stroke="#6f9a45" stroke-width="1.4"/>
+      <path d="M16 16c4-3 8-5 12-5M16 25c4-2 8-3 12-3M34 23c-4-2-8-3-12-3" fill="none" stroke="#7fae4e" stroke-width="1.8"/>
+    </symbol>
+    <symbol id="i-acacia" viewBox="0 0 48 48">
+      <rect x="22" y="26" width="4" height="17" rx="1.6" fill="#8a6a45"/>
+      <path d="M24 27l-6-8M24 27l6-8" fill="none" stroke="#8a6a45" stroke-width="2.4"/>
+      <ellipse cx="24" cy="16" rx="17" ry="7" fill="#7d9a52"/>
+      <ellipse cx="18" cy="20" rx="10" ry="5" fill="#89a75c"/>
+      <ellipse cx="30" cy="20" rx="10" ry="5" fill="#89a75c"/>
+    </symbol>
+    <symbol id="i-pebble" viewBox="0 0 48 48">
+      <ellipse cx="17" cy="33" rx="10" ry="7" fill="#a9b2a5"/>
+      <ellipse cx="32" cy="31" rx="8" ry="6" fill="#bcc5b8"/>
+      <ellipse cx="25" cy="25" rx="7" ry="5" fill="#c9d1c5"/>
+    </symbol>
+    <symbol id="i-fence" viewBox="0 0 48 48">
+      <path d="M10 10l2 4h-4zM24 10l2 4h-4zM38 10l2 4h-4z" fill="#b08d5f"/>
+      <g fill="#b08d5f"><rect x="8" y="13" width="4" height="27" rx="1"/><rect x="22" y="13" width="4" height="27" rx="1"/><rect x="36" y="13" width="4" height="27" rx="1"/></g>
+      <rect x="6" y="19" width="42" height="4" rx="1" fill="#c8a878"/>
+      <rect x="6" y="30" width="42" height="4" rx="1" fill="#c8a878"/>
+    </symbol>
+    <symbol id="i-flowerbed" viewBox="0 0 48 48">
+      <rect x="8" y="30" width="32" height="10" rx="4" fill="#8d7756"/>
+      <path d="M16 30V22M24 30V18M32 30V22" fill="none" stroke="#6f9a45" stroke-width="1.8"/>
+      <g fill="#e88aa4"><circle cx="16" cy="20" r="3.4"/><circle cx="32" cy="20" r="3.4"/></g>
+      <circle cx="24" cy="16" r="4" fill="#f0c65a"/>
+      <circle cx="24" cy="16" r="1.6" fill="#e0a63c"/>
+    </symbol>
+    <symbol id="i-lantern" viewBox="0 0 48 48">
+      <rect x="22" y="20" width="4" height="24" rx="1.5" fill="#6f7d67"/>
+      <path d="M16 8h16l-2 6H18z" fill="#6f7d67"/>
+      <rect x="17" y="14" width="14" height="10" rx="3" fill="#f6dd97"/>
+      <rect x="19" y="16" width="4" height="6" rx="1" fill="#fbeab8"/>
+      <rect x="14" y="44" width="20" height="3" rx="1.5" fill="#8e9a86"/>
+    </symbol>
+    <symbol id="i-bench" viewBox="0 0 48 48">
+      <path d="M11 20v-6h26v6" fill="none" stroke="#c8a878" stroke-width="3"/>
+      <rect x="8" y="20" width="32" height="4" rx="1.5" fill="#c8a878"/>
+      <rect x="8" y="25" width="32" height="4" rx="1.5" fill="#dcbd8c"/>
+      <rect x="12" y="29" width="4" height="13" rx="1.5" fill="#8a6a45"/>
+      <rect x="32" y="29" width="4" height="13" rx="1.5" fill="#8a6a45"/>
+    </symbol>
+    <symbol id="i-fountain" viewBox="0 0 48 48">
+      <ellipse cx="24" cy="38" rx="18" ry="7" fill="#a9b2a5"/>
+      <ellipse cx="24" cy="36" rx="14" ry="5" fill="#7fb4cd"/>
+      <rect x="22" y="24" width="4" height="12" rx="2" fill="#bcc5b8"/>
+      <ellipse cx="24" cy="22" rx="9" ry="4" fill="#a9b2a5"/>
+      <path d="M24 22v-9" fill="none" stroke="#7fb4cd" stroke-width="3" stroke-linecap="round"/>
+      <path d="M14 21c0-6 10-8 10-8s10 2 10 8" fill="none" stroke="#7fb4cd" stroke-width="2.4"/>
+    </symbol>
+    <symbol id="i-bridge" viewBox="0 0 48 48">
+      <path d="M6 30c6-12 30-12 36 0" fill="none" stroke="#a9805a" stroke-width="5"/>
+      <g fill="none" stroke="#8a6a45" stroke-width="2"><path d="M12 27v-6M20 24v-6M28 24v-6M36 27v-6M8 31v5M12 31v5M36 31v5M40 31v5"/></g>
+      <path d="M4 41c4 2 6 0 10 2s6-2 10 0 6 2 10 0 6-2 6-2" fill="none" stroke="#7fb4cd" stroke-width="2"/>
+    </symbol>
+  </defs></svg>
+
+  <header class="site-header wrap">
+    <a class="brand" href="/" aria-label="田野之间首页"><img src="/assets/icon.svg" alt="" width="36" height="36"><span>田野之间<small>LITTLE FIELD</small></span></a>
+    <nav aria-label="主导航"><a href="/#life">田园日常</a><a href="/guide.html">田园图鉴</a><a href="/#questions">常见问题</a><a class="nav-lang" href="/en/guide.html" hreflang="en" lang="en" title="Switch to English">EN</a><a class="nav-play" href="/play/" data-game-event="web_launch" aria-disabled="true" tabindex="-1">开始种田 <span aria-hidden="true">↗</span></a></nav>
+  </header>
+
+  <main id="main">
+    <section class="guide-hero wrap">
+      <p class="eyebrow"><span class="sun" aria-hidden="true">☀</span> FIELD GUIDE</p>
+      <h1>田园图鉴</h1>
+      <p class="guide-lead">从第一粒种子到自动化农庄，游戏里每一种作物、每一块菜田、每一栋建筑、每一棵树和每一件庭院装饰，都在这里。造价、解锁等级、收益和作用一次看清，方便你提前规划这座小农场。</p>
+      <p class="guide-meta">数据版本 v1.10.0 <span>·</span> 共 35 项内容 <span>·</span> 随版本更新校正</p>
+    </section>
+
+    <div class="toolbar">
+      <div class="wrap">
+        <div class="chips" role="group" aria-label="按分类筛选">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true">全部</button>
+          <button class="chip" type="button" data-filter="crops" aria-pressed="false">蔬菜 4</button>
+          <button class="chip" type="button" data-filter="fields" aria-pressed="false">农田 3</button>
+          <button class="chip" type="button" data-filter="buildings" aria-pressed="false">建筑 13</button>
+          <button class="chip" type="button" data-filter="trees" aria-pressed="false">树木 8</button>
+          <button class="chip" type="button" data-filter="decor" aria-pressed="false">装饰 7</button>
+        </div>
+        <div class="gsearch">
+          <label class="sr-only" for="gsearch">搜索图鉴内容</label>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg>
+          <input id="gsearch" type="search" placeholder="搜索名称或关键词，例如「售价」「喷灌」" autocomplete="off">
+        </div>
+        <p class="gcount" id="gcount" aria-live="polite">35</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <p class="gempty" id="gempty" hidden>没有找到匹配的内容，换个关键词试试。</p>
+
+      <!-- ============ 蔬菜 ============ -->
+      <section class="gsection" id="crops" data-cat="crops">
+        <div class="gsection-head">
+          <h2>蔬菜</h2>
+          <p>先用锄头松土，播下种子，再浇水。土壤有水或正在下雨时作物才会生长，浇一次水把整块田补满。<span class="gcount-badge">4</span></p>
+        </div>
+        <div class="ggrid">
+          <article class="gcard" data-search="胡萝卜 carrot 默认种子 自动补种">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-carrot"/></svg></span><div><h3 class="gname">胡萝卜</h3><span class="gtag">Lv.1 起 · 农机自动补种默认选择</span></div></div>
+            <p class="gdesc">种子最便宜、回本最快，开局滚动资金的主力。收割区域的伙伴补种时也默认选它，不必手动操作。</p>
+            <div class="gstats">
+              <div class="gstat">种子<b>5 G</b></div>
+              <div class="gstat">售价<b>16 G</b></div>
+              <div class="gstat">有效生长<b>35 秒</b></div>
+              <div class="gstat">单块净收<b>+11 G</b></div>
+            </div>
+          </article>
+          <article class="gcard" data-search="小麦 wheat">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-wheat"/></svg></span><div><h3 class="gname">小麦</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">比胡萝卜贵一点点，收益也高一点点，生长节奏略长。没有喷灌站时手动浇水的间隔更从容。</p>
+            <div class="gstats">
+              <div class="gstat">种子<b>6 G</b></div>
+              <div class="gstat">售价<b>20 G</b></div>
+              <div class="gstat">有效生长<b>45 秒</b></div>
+              <div class="gstat">单块净收<b>+14 G</b></div>
+            </div>
+          </article>
+          <article class="gcard" data-search="白菜 cabbage 白萝卜">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-cabbage"/></svg></span><div><h3 class="gname">白菜</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">中期主力：单位时间收益高于胡萝卜和小麦。配合喷灌站托管浇水时表现最好。</p>
+            <div class="gstats">
+              <div class="gstat">种子<b>8 G</b></div>
+              <div class="gstat">售价<b>25 G</b></div>
+              <div class="gstat">有效生长<b>50 秒</b></div>
+              <div class="gstat">单块净收<b>+17 G</b></div>
+            </div>
+          </article>
+          <article class="gcard" data-search="南瓜 pumpkin 收益最高 解锁 收获3次">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-pumpkin"/></svg></span><div><h3 class="gname">南瓜</h3><span class="gtag">累计收获 3 次后解锁</span></div></div>
+            <p class="gdesc">单位时间收益最高的作物，也是唯一需要解锁条件的品种。种子贵，钱紧时先别铺满。</p>
+            <div class="gstats">
+              <div class="gstat">种子<b>16 G</b></div>
+              <div class="gstat">售价<b>48 G</b></div>
+              <div class="gstat">有效生长<b>75 秒</b></div>
+              <div class="gstat">单块净收<b>+32 G</b></div>
+            </div>
+          </article>
+        </div>
+        <div class="gnote">
+          <h4>关于数值的几个提醒</h4>
+          <ul>
+            <li>「有效生长」指土壤湿润时才累计的时间。土壤干透后作物会停止生长，直到下雨或再次浇水。</li>
+            <li>手动浇水一次消耗 1 份储水。初始储水 6 份，每口<b>水井</b>再加 6 份，去主农场的水井可以重新打满。</li>
+            <li>收获后作物进入<b>菜篮</b>，在主农场的菜摊统一出售；仓库、物流中心与集团总部会提高售价。</li>
+            <li>不同地形的生长与耗水并不相同，详见下方「树木」一节的地形对照表。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ 农田 ============ -->
+      <section class="gsection" id="fields" data-cat="fields">
+        <div class="gsection-head">
+          <h2>农田</h2>
+          <p>除了开局自带的田地，你还可以在规划模式里按方块自由摆放菜田，形状随你定。<span class="gcount-badge">3</span></p>
+        </div>
+        <div class="ggrid">
+          <article class="gcard" data-search="小型菜田 fieldSmall 2x2">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-field-small"/></svg></span><div><h3 class="gname">小型菜田 2×2</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">最小的一块耕作区，正好占满 2×2 方格。用来填补树与建筑之间的边角空地最合适。</p>
+            <div class="gstats">
+              <div class="gstat">造价<b>8 G</b></div>
+              <div class="gstat">占地<b>2 × 2</b></div>
+            </div>
+          </article>
+          <article class="gcard" data-search="方形菜田 field 4x4 默认">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-field"/></svg></span><div><h3 class="gname">方形菜田 4×4</h3><span class="gtag">Lv.1 起 · 开局默认田块</span></div></div>
+            <p class="gdesc">标准农田，可以开垦、播种和收获。伙伴会按摆放后的新位置照料它，位置随时能在规划模式调整。</p>
+            <div class="gstats">
+              <div class="gstat">造价<b>15 G</b></div>
+              <div class="gstat">占地<b>4 × 4</b></div>
+            </div>
+          </article>
+          <article class="gcard" data-search="长形菜田 fieldLong 4x8">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-field-long"/></svg></span><div><h3 class="gname">长形菜田 4×8</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">长条耕作区，完整占据 4 列 8 行。适合沿着道路或河岸排成一整排，方便伙伴集中作业。</p>
+            <div class="gstats">
+              <div class="gstat">造价<b>30 G</b></div>
+              <div class="gstat">占地<b>4 × 8</b></div>
+            </div>
+          </article>
+        </div>
+        <div class="gnote">
+          <h4>田地从哪来</h4>
+          <ul>
+            <li>主农场开局自带 <b>16 块</b>固定田地：其中 12 块可以直接打理（6 块已松好土），剩下的荒地花 <b>100 G</b> 一次性开放。</li>
+            <li>每开拓一个新区域，会再带来 <b>16 块</b>田地 —— 碧水渔场除外，那里只有水面和岸边建造空地。</li>
+            <li>开启规划模式之后，新区域的这 16 块地需要先由你自己布置到地图上才会启用。</li>
+            <li>摆放上限：每个区域最多 <b>16 + 农场等级 × 4</b> 块农田、<b>2 + 农场等级</b> 座建筑、60 件其他物件。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ 建筑 ============ -->
+      <section class="gsection" id="buildings" data-cat="buildings">
+        <div class="gsection-head">
+          <h2>建筑</h2>
+          <p>13 种建筑按农场等级逐步解锁，从住宿、储水一路到全自动收割与销售。<span class="gcount-badge">13</span></p>
+        </div>
+
+        <h3 class="gsub">Lv.1 小农田园 · 起步三件套</h3>
+        <div class="ggrid">
+          <article class="gcard" data-search="工人小屋 cottage 床位 招募">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-cottage"/></svg></span><div><h3 class="gname">工人小屋</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">提供 <b>2 个工人床位</b>。想招募更多伙伴一起种田，就得先盖它；在小屋前即可安排新伙伴加入。</p>
+            <div class="gstats"><div class="gstat">造价<b>120 G</b></div><div class="gstat">床位<b>+2</b></div></div>
+          </article>
+          <article class="gcard" data-search="仓库 barn 售价 加成 15%">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-barn"/></svg></span><div><h3 class="gname">仓库</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">农产品与鱼肉售价提高 <b>15%</b>，可以重复建造，加成最高累计到 <b>+60%</b>。越早建越划算。</p>
+            <div class="gstats"><div class="gstat">造价<b>160 G</b></div><div class="gstat">售价加成<b>+15%</b></div></div>
+          </article>
+          <article class="gcard" data-search="水井 well 储水 打水">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-well"/></svg></span><div><h3 class="gname">水井</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">储水上限增加 <b>6 份</b>，并且可以就近打水，不必跑回主农场。机械化之前它是手浇水农场的关键。</p>
+            <div class="gstats"><div class="gstat">造价<b>90 G</b></div><div class="gstat">储水<b>+6 份</b></div></div>
+          </article>
+        </div>
+
+        <h3 class="gsub">Lv.2 家庭农场 · 照料自动化</h3>
+        <div class="ggrid">
+          <article class="gcard" data-search="自动喷灌站 sprinkler 浇水 补水">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-sprinkler"/></svg></span><div><h3 class="gname">自动喷灌站</h3><span class="gtag">Lv.2 起</span></div></div>
+            <p class="gdesc">覆盖本区域全部农田，持续自动补水，且<b>不消耗</b>手持水壶的储水。人手不够时第一优先建造。</p>
+            <div class="gstats"><div class="gstat">造价<b>180 G</b></div><div class="gstat">作用范围<b>本区</b></div></div>
+          </article>
+          <article class="gcard" data-search="生态温室 greenhouse 生长 35%">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-greenhouse"/></svg></span><div><h3 class="gname">生态温室</h3><span class="gtag">Lv.2 起</span></div></div>
+            <p class="gdesc">本区所有作物的生长速度<b>再提高 35%</b>。和喷灌站搭配，一整区的产出会明显上一个台阶。</p>
+            <div class="gstats"><div class="gstat">造价<b>240 G</b></div><div class="gstat">生长加成<b>+35%</b></div></div>
+          </article>
+        </div>
+
+        <h3 class="gsub">Lv.3 机械化农庄 · 机器下田</h3>
+        <div class="ggrid">
+          <article class="gcard" data-search="收割机库 harvester 自动收获">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-harvester"/></svg></span><div><h3 class="gname">收割机库</h3><span class="gtag">Lv.3 起</span></div></div>
+            <p class="gdesc">部署一辆自动收割机，每 <b>8 秒</b>收获本区一块成熟作物，直接存入菜篮，不用派人手。</p>
+            <div class="gstats"><div class="gstat">造价<b>480 G</b></div><div class="gstat">作业间隔<b>8 秒</b></div></div>
+          </article>
+          <article class="gcard" data-search="农机工坊 workshop 补种 开垦 胡萝卜">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-workshop"/></svg></span><div><h3 class="gname">农机工坊</h3><span class="gtag">Lv.3 起</span></div></div>
+            <p class="gdesc">全场收割机加速到每 <b>4 秒</b>作业一次；配备收割机的区域还会每 8 秒自动开垦空地或补种一株胡萝卜（种子 5 G）。</p>
+            <div class="gstats"><div class="gstat">造价<b>320 G</b></div><div class="gstat">全场提速<b>4 秒</b></div></div>
+          </article>
+        </div>
+
+        <h3 class="gsub">Lv.4 农业合作社 · 产销联动</h3>
+        <div class="ggrid">
+          <article class="gcard" data-search="合作社物流中心 logistics 自动出售 20%">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-logistics"/></svg></span><div><h3 class="gname">合作社物流中心</h3><span class="gtag">Lv.4 起</span></div></div>
+            <p class="gdesc">每 <b>8 秒</b>自动出售全场菜篮，蔬菜售价额外 <b>+20%</b>（同类加成不叠加）。从此不用再去菜摊点出售。</p>
+            <div class="gstats"><div class="gstat">造价<b>650 G</b></div><div class="gstat">售价加成<b>+20%</b></div></div>
+          </article>
+          <article class="gcard" data-search="工人公寓 dorm 床位 6">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-dorm"/></svg></span><div><h3 class="gname">工人公寓</h3><span class="gtag">Lv.4 起</span></div></div>
+            <p class="gdesc">一次提供 <b>6 个床位</b>，支持最多 16 位伙伴分区协作。地图铺开后，各区有人手才转得起来。</p>
+            <div class="gstats"><div class="gstat">造价<b>360 G</b></div><div class="gstat">床位<b>+6</b></div></div>
+          </article>
+        </div>
+
+        <h3 class="gsub">Lv.5 农业集团 · 终局版图</h3>
+        <div class="ggrid">
+          <article class="gcard" data-search="农业研究院 research 生长 25%">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-research"/></svg></span><div><h3 class="gname">农业研究院</h3><span class="gtag">Lv.5 起</span></div></div>
+            <p class="gdesc">全场作物生长速度<b>再提高 25%</b>（同类加成不叠加），与温室叠加后成熟会快到几乎停不下来。</p>
+            <div class="gstats"><div class="gstat">造价<b>1000 G</b></div><div class="gstat">生长加成<b>+25%</b></div></div>
+          </article>
+          <article class="gcard" data-search="农业集团总部 headquarters 地标 30%">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-hq"/></svg></span><div><h3 class="gname">农业集团总部</h3><span class="gtag">Lv.5 起</span></div></div>
+            <p class="gdesc">全场售价<b>再提高 30%</b>，解锁集团地标与完整的自动化生产链（同类加成不叠加）。</p>
+            <div class="gstats"><div class="gstat">造价<b>1400 G</b></div><div class="gstat">售价加成<b>+30%</b></div></div>
+          </article>
+        </div>
+
+        <h3 class="gsub">碧水渔场专属</h3>
+        <div class="ggrid">
+          <article class="gcard" data-search="渔船码头 boathouse 捕鱼 鱼肉 2份">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-boathouse"/></svg></span><div><h3 class="gname">渔船码头</h3><span class="gtag">仅碧水渔场 · 固定建在本区北岸</span></div></div>
+            <p class="gdesc">配备一艘渔船，伙伴乘船下水捕鱼，每航次最多带回 <b>2 份鱼肉</b>，返航后入库。鱼群上限 12 尾，每 20 秒补充 1 尾。</p>
+            <div class="gstats"><div class="gstat">造价<b>180 G</b></div><div class="gstat">单次捕获<b>2 份</b></div></div>
+          </article>
+          <article class="gcard" data-search="鱼肉市场 fishmarket 出售鱼肉 18G">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-fishmarket"/></svg></span><div><h3 class="gname">鱼肉市场</h3><span class="gtag">仅碧水渔场</span></div></div>
+            <p class="gdesc">出售全场鱼肉，基础售价每份 <b>18 G</b>，同样享受仓库与全场销售加成。和物流中心搭配最省心。</p>
+            <div class="gstats"><div class="gstat">造价<b>140 G</b></div><div class="gstat">鱼肉单价<b>18 G</b></div></div>
+          </article>
+        </div>
+        <div class="gnote">
+          <h4>建筑小提示</h4>
+          <ul>
+            <li>每个新开拓的区域自带 <b>2 处建造空地</b>，渔场的 2 处都在岸上；空地不够时就去另一个区域另找位置。</li>
+            <li>野外有时会碰到<b>废弃旧水井、旧仓库、旧工人小屋</b>，在原址按原样重建只需<b>半价</b>。</li>
+            <li>住宅床位上限为初始 1 人 + 工人小屋 ×2 + 工人公寓 ×6，全场最多 <b>16 位伙伴</b>。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ 树木 ============ -->
+      <section class="gsection" id="trees" data-cat="trees">
+        <div class="gsection-head">
+          <h2>树木</h2>
+          <p>8 种可自行栽种的树木，每种半格大小，伙伴会代替你栽下。<span class="gcount-badge">8</span></p>
+        </div>
+        <div class="ggrid">
+          <article class="gcard" data-search="橡树 oak">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-oak"/></svg></span><div><h3 class="gname">橡树</h3><span class="gtag">Lv.1 起 · 花野草甸常见</span></div></div>
+            <p class="gdesc">树冠饱满的阔叶树，是最基础的行道树。最百搭的基础树种，成排布置用它最安全。</p>
+            <div class="gstats"><div class="gstat">造价<b>12 G</b></div><div class="gstat">树种<b>阔叶</b></div></div>
+          </article>
+          <article class="gcard" data-search="白桦 birch">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-birch"/></svg></span><div><h3 class="gname">白桦</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">白皮细干、轻盈的树冠。在林间沃土的山谷里最常自然生长，适合成排种植。</p>
+            <div class="gstats"><div class="gstat">造价<b>15 G</b></div><div class="gstat">树种<b>阔叶</b></div></div>
+          </article>
+          <article class="gcard" data-search="松树 pine">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-pine"/></svg></span><div><h3 class="gname">松树</h3><span class="gtag">Lv.1 起 · 林间沃土常见</span></div></div>
+            <p class="gdesc">三层针叶塔形，冬季感最强。适合布置在山坡、建筑背后来拉出层次。</p>
+            <div class="gstats"><div class="gstat">造价<b>18 G</b></div><div class="gstat">树种<b>针叶</b></div></div>
+          </article>
+          <article class="gcard" data-search="垂柳 willow">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-willow"/></svg></span><div><h3 class="gname">垂柳</h3><span class="gtag">Lv.1 起 · 河湖沿岸</span></div></div>
+            <p class="gdesc">枝条下垂、线条柔和。丰饶河谷与碧水渔场天生就有它，种在岸边最相衬。</p>
+            <div class="gstats"><div class="gstat">造价<b>21 G</b></div><div class="gstat">适宜地形<b>近水</b></div></div>
+          </article>
+          <article class="gcard" data-search="樱花树 cherry 主农场 天然">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-cherry"/></svg></span><div><h3 class="gname">樱花树</h3><span class="gtag">Lv.1 起 · 主农场开局就有</span></div></div>
+            <p class="gdesc">一团粉云的观花树。主农场西侧一开局就立着一棵，把它周围打通最出片。</p>
+            <div class="gstats"><div class="gstat">造价<b>24 G</b></div><div class="gstat">树种<b>观花</b></div></div>
+          </article>
+          <article class="gcard" data-search="果树 fruit">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-fruit"/></svg></span><div><h3 class="gname">果树</h3><span class="gtag">Lv.2 起</span></div></div>
+            <p class="gdesc">绿冠上挂满红果，果园草甸的主角。沿着果园一侧整齐排开最好看。</p>
+            <div class="gstats"><div class="gstat">造价<b>27 G</b></div><div class="gstat">树种<b>果树</b></div></div>
+          </article>
+          <article class="gcard" data-search="竹丛 bamboo">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-bamboo"/></svg></span><div><h3 class="gname">竹丛</h3><span class="gtag">Lv.2 起</span></div></div>
+            <p class="gdesc">三两细竿，自带清瘦的东方味。密植成一小片竹篱，尤其适合隔出水岸和小径。</p>
+            <div class="gstats"><div class="gstat">造价<b>30 G</b></div><div class="gstat">树种<b>竹</b></div></div>
+          </article>
+          <article class="gcard" data-search="金合欢 acacia 旱原">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-acacia"/></svg></span><div><h3 class="gname">金合欢</h3><span class="gtag">Lv.2 起 · 金色旱原常见</span></div></div>
+            <p class="gdesc">平顶舒展的伞形冠，耐旱气质。在金色旱原它是天然林的主力，缺口地形用它补最自然。</p>
+            <div class="gstats"><div class="gstat">造价<b>33 G</b></div><div class="gstat">适宜地形<b>旱原</b></div></div>
+          </article>
+        </div>
+        <div class="gnote">
+          <h4>不同地形，天生不同的风景</h4>
+          <table class="gtable">
+            <thead><tr><th>地形群系</th><th>生长</th><th>耗水</th><th>天生树木</th><th>典型景致</th></tr></thead>
+            <tbody>
+              <tr><td>花野草甸</td><td>基准</td><td>基准</td><td>橡树 · 樱花树 · 果树 · 白桦</td><td>繁花丘陵 / 樱花缓坡 / 果园草甸</td></tr>
+              <tr><td>丰饶河谷</td><td>+20%</td><td>−20%</td><td>垂柳 · 白桦 · 竹丛 · 橡树</td><td>柳岸河湾 / 芦苇湿地 / 双潭水乡</td></tr>
+              <tr><td>林间沃土</td><td>+10%</td><td>基准</td><td>松树 · 白桦 · 竹丛 · 橡树</td><td>针叶山麓 / 白桦石谷 / 竹林山丘</td></tr>
+              <tr><td>金色旱原</td><td>+30%</td><td>+70%</td><td>金合欢 · 松树 · 果树</td><td>赭石台地 / 风蚀石林 / 金色沙丘</td></tr>
+              <tr><td>碧水渔场</td><td>基准</td><td>基准</td><td>垂柳 · 白桦 · 竹丛 · 橡树</td><td>开阔湖岸 / 芦苇湖湾 / 林间湖泊</td></tr>
+            </tbody>
+          </table>
+          <p class="gtable-note">林地的树木密度最高、金色旱原最稀疏；天生树林也可以收起更换，但一开始最好留几棵成景。</p>
+        </div>
+      </section>
+
+      <!-- ============ 装饰 ============ -->
+      <section class="gsection" id="decor" data-cat="decor">
+        <div class="gsection-head">
+          <h2>装饰</h2>
+          <p>7 件庭院小物，每个区域最多摆放 60 件，用来把农场布置成你想要的样子。<span class="gcount-badge">7</span></p>
+        </div>
+        <div class="ggrid">
+          <article class="gcard" data-search="鹅卵石 pebble 连片">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-pebble"/></svg></span><div><h3 class="gname">鹅卵石</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">圆润的河滩石，只占 1 格。相邻摆放会自动拼成一整片，用来铺小径或压边最好用。</p>
+            <div class="gstats"><div class="gstat">造价<b>6 G</b></div><div class="gstat">占地<b>1 × 1</b></div></div>
+          </article>
+          <article class="gcard" data-search="木篱笆 fence">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-fence"/></svg></span><div><h3 class="gname">木篱笆</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">划分庭院与菜田的矮栏。围的时候<b>记得留出通行缺口</b>，伙伴会被围栏挡住。</p>
+            <div class="gstats"><div class="gstat">造价<b>8 G</b></div><div class="gstat">占地<b>2 × 1</b></div></div>
+          </article>
+          <article class="gcard" data-search="花圃 flowerbed">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-flowerbed"/></svg></span><div><h3 class="gname">花圃</h3><span class="gtag">Lv.1 起</span></div></div>
+            <p class="gdesc">一簇四季小花，装点田间空地。填补田间空白最省钱的选择，围着屋子摆一圈就很出效果。</p>
+            <div class="gstats"><div class="gstat">造价<b>10 G</b></div><div class="gstat">占地<b>2 × 2</b></div></div>
+          </article>
+          <article class="gcard" data-search="木桥 bridge 水面">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-bridge"/></svg></span><div><h3 class="gname">木桥</h3><span class="gtag">Lv.1 起 · 可架在水面</span></div></div>
+            <p class="gdesc">唯一能架在水面上的装饰，让伙伴跨越河流与池塘，把原本断开的两岸连成一条路。</p>
+            <div class="gstats"><div class="gstat">造价<b>25 G</b></div><div class="gstat">占地<b>4 × 2</b></div></div>
+          </article>
+          <article class="gcard" data-search="庭院灯 lantern">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-lantern"/></svg></span><div><h3 class="gname">庭院灯</h3><span class="gtag">Lv.2 起</span></div></div>
+            <p class="gdesc">一盏暖黄的田园路灯，只占 1 格。沿着主路成对摆放，黄昏时整条路都亮起来。</p>
+            <div class="gstats"><div class="gstat">造价<b>25 G</b></div><div class="gstat">占地<b>1 × 1</b></div></div>
+          </article>
+          <article class="gcard" data-search="长椅 bench 休憩 树荫">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-bench"/></svg></span><div><h3 class="gname">长椅</h3><span class="gtag">Lv.2 起</span></div></div>
+            <p class="gdesc">在树荫下或池塘边留一个休憩的角落。与樱花树、垂柳搭配是城里的固定组合。</p>
+            <div class="gstats"><div class="gstat">造价<b>35 G</b></div><div class="gstat">占地<b>2 × 1</b></div></div>
+          </article>
+          <article class="gcard" data-search="花园喷泉 fountain 中心景观">
+            <div class="gcard-top"><span class="gicon"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="#i-fountain"/></svg></span><div><h3 class="gname">花园喷泉</h3><span class="gtag">Lv.3 起</span></div></div>
+            <p class="gdesc">机械化农庄解锁的花园中心景观。放在庭院正中或道路交汇处，四周绕一圈花圃和鹅卵石。</p>
+            <div class="gstats"><div class="gstat">造价<b>120 G</b></div><div class="gstat">占地<b>2 × 2</b></div></div>
+          </article>
+        </div>
+        <div class="gnote">
+          <h4>规划模式的几个规则</h4>
+          <ul>
+            <li>摆放前先看地形：水是过不去的，建筑也不能压在<b>农舍、水井、菜摊、风车</b>这四处主农场固定景致上。</li>
+            <li>已建成的设施可以移动但不能拆除；收起农作物前要先收获这块田。</li>
+            <li>拆除会返还一部分造价，天然树木只折算一点木柴钱，反复拆建一定会亏。</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+    <section class="invitation wrap" id="start"><div class="invitation-copy"><p class="eyebrow">START YOUR OWN</p><h2>看懂了，<br>就去种一片自己的田野。</h2><p>打开网页版立刻开始，或装到手机上随时回来。</p><div class="actions"><a class="button primary" href="/downloads/latest.apk" download data-game-event="apk_download" aria-disabled="true" tabindex="-1">下载 Android APK <span aria-hidden="true">↓</span></a><a class="button secondary" href="/play/" data-game-event="web_launch" aria-disabled="true" tabindex="-1">在线开始 <span aria-hidden="true">↗</span></a></div></div><div class="invitation-art" aria-hidden="true"><img src="/assets/icon.svg" alt="" width="190" height="190"><span>make room for slow days.</span></div></section>
+  </main>
+
+  <footer class="wrap"><a class="brand" href="/"><img src="/assets/icon.svg" alt="" width="28" height="28"><span>田野之间<small>LITTLE FIELD</small></span></a><p>留一点时间，给慢慢生长的生活。</p><div><a href="/privacy.html">隐私说明</a><a href="/guide.html">田园图鉴</a><span>© 2026 SUPUZZ</span></div></footer>
+  <div class="mobile-download"><a href="/downloads/latest.apk" class="button primary" download data-game-event="apk_download" aria-disabled="true" tabindex="-1">下载 Android</a><a href="/play/" class="button secondary" data-game-event="web_launch" aria-disabled="true" tabindex="-1">网页版 ↗</a></div>
+
+  <script defer src="/guide.js"></script>
+</body>
+</html>
