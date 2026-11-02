@@ -64,7 +64,27 @@ python3 -m http.server 4173
 
 本地预览时 `/play/`、`/downloads/*` 会 404，这是预期的，它们属于线上后端。
 
+## 自检
+
+```bash
+python3 scripts/check-links.py   # 站内链接 + sitemap 地址是否都指向真实文件
+```
+
+CI 在每次部署前跑同一个脚本，失败就不会上线。
+
 ## 部署
+
+**自动**：push 到 `main` 即部署（`.github/workflows/deploy.yml`，也可在 Actions 页手动触发）。需要仓库 Secrets：
+
+| Secret | 必填 | 说明 |
+| --- | --- | --- |
+| `DEPLOY_SSH_HOST` | 是 | ECS 公网 IP 或域名 |
+| `DEPLOY_SSH_USER` | 是 | 一般 `root` |
+| `DEPLOY_SSH_PRIVATE_KEY` | 是 | 对应公钥已写入服务器 `authorized_keys` 的私钥 |
+| `DEPLOY_SSH_PORT` | 否 | 默认 22 |
+| `DEPLOY_REMOTE_PATH` | 否 | 默认 `/var/www/littlefield`，必须与 Nginx `root` 一致 |
+
+**手动**（首次上线、或 CI 不可用时）：
 
 ```bash
 cp deploy.env.example .env.deploy   # 填写 ECS 地址与目录，.env.deploy 不入库
@@ -72,7 +92,7 @@ bash scripts/deploy.sh              # 上传静态文件
 bash scripts/deploy.sh --reload     # 上传后顺便 nginx -t && reload
 ```
 
-Nginx 配置见 `ops/nginx/`，首次切换步骤见 [ops/README.md](ops/README.md)。
+Nginx 配置见 `ops/nginx/`，**不随 CI 自动下发**（改配置风险高，手动改完 `nginx -t` 再 reload）。首次切换步骤见 [ops/README.md](ops/README.md)。
 
 ## 发布游戏新版本
 

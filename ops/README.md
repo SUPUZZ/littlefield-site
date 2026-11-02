@@ -4,16 +4,22 @@
 
 ## 1. 放静态文件
 
+首次建议手动跑一次，确认目录和权限都对：
+
 ```bash
 cp deploy.env.example .env.deploy   # 填写 ECS 地址，默认目录 /var/www/littlefield
 bash scripts/deploy.sh
 ```
+
+之后交给 CI：把 `DEPLOY_SSH_HOST` / `DEPLOY_SSH_USER` / `DEPLOY_SSH_PRIVATE_KEY`（以及可选的 `DEPLOY_SSH_PORT`、`DEPLOY_REMOTE_PATH`）配进仓库 Secrets，push 到 `main` 就会自动上传。
 
 确认服务器上有：
 
 ```bash
 ls -la /var/www/littlefield/index.html /var/www/littlefield/en/index.html
 ```
+
+> Nginx 配置**不随 CI 下发**，第 2 步始终是手动操作。
 
 ## 2. 换 Nginx 配置
 

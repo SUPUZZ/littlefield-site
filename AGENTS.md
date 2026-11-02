@@ -28,6 +28,8 @@
 
 ## 提交前自检
 
-- 本地 `python3 -m http.server` 打开首页、图鉴、英文首页，确认没有 404 的样式/图片。
+- `python3 scripts/check-links.py` 必须通过（CI 也跑这个，不通过不会部署）。
+- 本地 `python3 -m http.server 4173` 打开首页、图鉴、英文首页，确认没有 404 的样式/图片。
 - `git diff --check` 无空白错误。
 - 确认没有把 `.env.deploy`、`.DS_Store` 提交进来。
+- 改了 `ops/nginx/` 时不能只 push 了事：Nginx 配置不随 CI 下发，需要在服务器上手动替换并 `nginx -t`。
