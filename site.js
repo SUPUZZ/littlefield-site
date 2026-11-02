@@ -10,10 +10,10 @@
   // 返回的 url 是根路径，跨域时要补全，否则点下去会 404。
   const apiOrigin = location.hostname === 'game.supuzz.cn' ? '' : 'https://game.supuzz.cn';
   const absolute = url => /^https?:\/\//.test(url) ? url : apiOrigin + url;
-  fetch(apiOrigin + '/release.json').then(response => {
-    if (!response.ok) throw new Error('release unavailable');
-    return response.json();
-  }).then(release => {
+  // 上一次成功的发布信息留在本机：接口偶发失败（解析抖动、断网）时按钮不该变灰。
+  const CACHE_KEY = 'littlefield_release';
+
+  const applyRelease = release => {
     const version = document.getElementById('release-version');
     const size = document.getElementById('release-size');
     if (version) version.textContent = release.apk ? release.apk.version : copy.noApk;
@@ -25,10 +25,33 @@
     });
     const checksum = document.querySelector('.checksum');
     if (checksum) checksum.hidden = !release.apk;
+  };
+
+  const readCache = () => {
+    try { return JSON.parse(localStorage.getItem(CACHE_KEY) || 'null'); } catch { return null; }
+  };
+
+  // 最多试 3 次；偶发的解析抖动重试一次通常就过去了。
+  const fetchRelease = attempt => fetch(apiOrigin + '/release.json', { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) throw new Error('release unavailable');
+      return response.json();
+    })
+    .catch(error => {
+      if (attempt >= 3) throw error;
+      return new Promise(resolve => setTimeout(resolve, 700 * attempt)).then(() => fetchRelease(attempt + 1));
+    });
+
+  fetchRelease(1).then(release => {
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify(release)); } catch {}
+    applyRelease(release);
   }).catch(() => {
+    const cached = readCache();
+    if (cached) { applyRelease(cached); return; }
     const size = document.getElementById('release-size');
     if (size) size.textContent = copy.failed;
   });
+
   document.addEventListener('click', event => {
     const link = event.target.closest('a[aria-disabled="true"]');
     if (link) event.preventDefault();
