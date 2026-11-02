@@ -17,7 +17,7 @@
 
 - 纯静态 HTML + CSS + 原生 JS，**没有构建步骤**。
 - `scripts/stage.sh` 按白名单把站点文件复制到 `dist/`，两个部署目标都上传 `dist/`。
-- 发布：`bash scripts/deploy.sh`，一条命令（会先跑链接自检）。没有 CI、没有密钥、没有构建。
+- 发布：push 到 `main` 自动发 GitHub Pages；改 `.cn` 侧时用 `bash scripts/deploy.sh`。没有构建步骤。
 
 ## 目录结构
 
@@ -96,26 +96,33 @@ bash scripts/stage.sh            # 生成 dist/，可顺带检查上线文件清
 
 ## 发布
 
-一条命令：
+**自动（GitHub Pages → `game.supuzz.com`）**
+
+push 到 `main` 触发 `.github/workflows/deploy.yml`：链接自检 → `scripts/stage.sh` 生成 `dist/` → 只上传 `dist/` 发布。不需要任何 Secrets。
+
+首次使用要在仓库 Settings → Pages 把 **Source 设为 GitHub Actions**。没启用时工作流不会报错，只在日志里提示后跳过。
+
+**手动（阿里云 → `game.supuzz.cn`）**
 
 ```bash
 bash scripts/deploy.sh
 ```
 
-它会依次做：链接自检 → 组装 `dist/` → 打包上传 → 服务器上换目录（旧的留作 `.prev` 可回滚）。
-
-第一次用需要 `cp deploy.env.example .env.deploy` 填服务器地址（该文件不入库）。加 `--reload` 可在上传后顺带 `nginx -t && systemctl reload nginx`。
+`.cn` 现在只服务 `/analytics.js`（其余路径 301 到 `.com`），所以平时用不到；只有改了 `analytics.js`、或需要回滚页面时才跑。第一次用要 `cp deploy.env.example .env.deploy` 填服务器地址（不入库）。
 
 Nginx 配置在 `ops/nginx/`，**不会自动下发**——改配置要手动替换并 `nginx -t`，见 [ops/README.md](ops/README.md)。
 
-## 以后想换成 GitHub Pages
+## 把域名切到 Pages 的步骤
 
-可行且更省事，但需要两件手动操作，缺一不可：
+`game.supuzz.com` 目前 CNAME 到 `game.supuzz.cn`（阿里云伺服）。要改用 Pages：
 
-1. 仓库 Settings → Pages → Source 选 **GitHub Actions**，Custom domain 填 `game.supuzz.com`；
-2. DNS 把 `game.supuzz.com` 的 CNAME 从 `game.supuzz.cn` 改成 `supuzz.github.io`。
+1. 仓库 Settings → Pages → Source 选 **GitHub Actions**；
+2. 跑一次工作流，确认 `dist/` 发布成功；
+3. Settings → Pages → Custom domain 填 `game.supuzz.com`；
+4. DNS 把 `game.supuzz.com` 的 CNAME 从 `game.supuzz.cn` 改成 `supuzz.github.io`（建议先把 TTL 调成 600）；
+5. 等 GitHub 签发证书后勾 **Enforce HTTPS**。
 
-⚠️ 顺序不能反：**先把 Pages 开起来再改 DNS**，否则 `game.supuzz.com` 会直接打不开。`.cn` 上的 `/play/`、`/downloads/`、`/api/`、`/analytics.js` 不受影响，一直留在服务器上。
+⚠️ **顺序不能反**：先开 Pages 再改 DNS，否则 `game.supuzz.com` 会直接打不开。切换后 `.com/play/`、`.com/downloads/` 会 404（Pages 没有后端），但页面里的按钮都指向 `.cn` 绝对地址，点击不受影响。
 
 ## 发布游戏新版本
 

@@ -1,0 +1,70 @@
+name: Deploy landing site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: littlefield-site-pages
+  cancel-in-progress: true
+
+jobs:
+  # 链接与 sitemap 自检，不通过就不发布
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 静态站自检
+        run: python3 scripts/check-links.py
+
+  # 发布到 GitHub Pages（game.supuzz.com）
+  pages:
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pages 没开时给出提示而不是报错，免得每次 push 都是一个红叉
+      - name: 检查 Pages 是否已启用
+        id: pages_enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          code=$(curl -s -o /dev/null -w '%{http_code}' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages")
+          if [ "$code" = "200" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Pages 未启用::仓库 Settings → Pages → Source 选择 GitHub Actions，再重新运行本工作流。"
+          fi
+
+      - name: 生成 dist/
+        if: steps.pages_enabled.outputs.enabled == 'true'
+        run: bash scripts/stage.sh
+
+      - name: 配置 Pages
+        if: steps.pages_enabled.outputs.enabled == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: 上传 dist/
+        if: steps.pages_enabled.outputs.enabled == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: 部署
+        id: deployment
+        if: steps.pages_enabled.outputs.enabled == 'true'
+        uses: actions/deploy-pages@v4

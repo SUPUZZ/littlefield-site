@@ -22,7 +22,7 @@ cp deploy.env.example .env.deploy   # 填写 ECS 地址，默认目录 /var/www/
 bash scripts/deploy.sh
 ```
 
-之后每次发布都是同一条命令：`bash scripts/deploy.sh`。
+之后每页的日常更新走 GitHub Pages（push 即发布），只有改动 `.cn` 侧（主要是 `/analytics.js`）时才需要 `bash scripts/deploy.sh`。
 
 确认服务器上有：
 
