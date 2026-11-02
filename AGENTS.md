@@ -15,7 +15,7 @@
 - **游戏与下载必须用 `https://game.supuzz.cn/...` 绝对地址**（Pages 没有反向代理，写成 `/play/` 会 404）。
 - 普通页面之间的跳转仍用根路径（`/guide.html`），因为两个域名都是同一份文件树。
 - `sitemap.xml` 里只有 `/play/` 一条用 `.cn`，其余用 `.com`。
-- `.cn` 上除 `/play/`、`/downloads/`、`/api/`、`/analytics.js` 外一律 301 到 `.com`。往 `.cn` 加任何"需要在 .cn 直接打开"的路径，都要先改 `ops/nginx/littlefield.inc`。
+- `.cn` 上除 `/play/`、`/downloads/`、`/api/`、`/analytics.js`、`/release.json` 外一律 301 到 `.com`。往 `.cn` 加任何"需要在 .cn 直接打开"的路径，都要先改 `ops/nginx/littlefield.inc`。
 
 ## 页面与语言
 
@@ -33,6 +33,7 @@
 - 玩法长文共用 `stories.css`；图鉴页用 `guide.js`。
 - 图片放 `assets/`，新增图片先压到合适尺寸并补进 `assets/README.md` 的来源说明。
 - 首页与图鉴页都有 `data-game-event` 埋点属性，新增下载/游玩按钮时沿用 `apk_download` / `web_launch`，不要自造事件名。
+- 页面上的版本号、按钮禁用态都由 `site.js` 拉 `/release.json` 决定。这个接口挂在 `.cn`，跨域取；取不到时按钮会**保持置灰**（不是样式坏了）。改 `site.js` 或 Nginx 时务必保留这条路径。
 - `.com` 上的埋点是跨域上报，依赖 `game.supuzz.cn` 的 Nginx 放行 `OPTIONS`；不要顺手把 `ops/nginx/littlefield.inc` 里那三个 `limit_except` 改回只允许 POST。
 
 ## 提交前自检

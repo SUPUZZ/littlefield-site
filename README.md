@@ -52,6 +52,7 @@
 | `https://game.supuzz.cn/play/` | 网页版游戏入口（当前加密发布包） | feedback-server |
 | `https://game.supuzz.cn/downloads/latest.apk` | APK 最新版下载（302 到固定版本） | feedback-server |
 | `https://game.supuzz.cn/downloads/latest.apk.sha256` | APK 校验值 | feedback-server |
+| `https://game.supuzz.cn/release.json` | 当前 APK/网页版版本；落地页据此解除按钮禁用 | feedback-server |
 | `https://game.supuzz.cn/api/game/events` | 下载/点击/加载事件埋点 | feedback-server |
 | `https://game.supuzz.cn/api/game/support` 等 | 游戏内打赏、档案 | feedback-server |
 | `https://api.supuzz.cn/admin/*` | 后台（游戏发布、统计、打赏） | feedback-server，游戏域名上 404 |
@@ -64,6 +65,7 @@
 | `/downloads/*` | APK 由后端下发 |
 | `/api/*` | 埋点与游戏接口 |
 | `/analytics.js` | `/play/` 的 CSP 是 `script-src 'self'`，跳到 `.com` 会被拦掉 |
+| `/release.json` | 落地页靠它判断版本；取不到就一直是"按钮置灰"状态 |
 
 四条硬规则：
 

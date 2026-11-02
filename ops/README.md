@@ -7,7 +7,7 @@
 | `game.supuzz.com` | 阿里云 ECS + Nginx（DNS 暂未切 Pages） | 站点根目录 `/var/www/littlefield` |
 | `game.supuzz.cn` | 阿里云 ECS + Nginx | 本目录的配置；页面 301 到 `.com` |
 
-`.cn` 现在只承担游戏与接口：`/play/`、`/downloads/`、`/api/`、`/analytics.js`。其余路径在 `location /` 里按 `$host` 判断后 301 到 `.com`；`.com` 自身（DNS 切换前仍指向本机）不会进这个分支，所以不会循环。
+`.cn` 现在只承担游戏与接口：`/play/`、`/downloads/`、`/api/`、`/analytics.js`、`/release.json`。其余路径在 `location /` 里按 `$host` 判断后 301 到 `.com`；`.com` 自身（DNS 切换前仍指向本机）不会进这个分支，所以不会循环。
 
 `.cn` 上，`/` 由 Nginx 直接读 `/var/www/littlefield`，`/play/`、`/downloads/`、`/api/` 转发给 `feedback-server`。首次从"后端伺服静态页"切到"Nginx 读磁盘"分三步，**顺序不能反**（先把文件放上去，再改 Nginx，否则首页会 404）。
 
