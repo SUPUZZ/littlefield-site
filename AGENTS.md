@@ -20,7 +20,8 @@
 ## 页面与语言
 
 - 中文放在根目录，英文放在 `en/`，两边**结构对应**：`index.html` ↔ `en/index.html`，`guide.html` ↔ `en/guide.html`，`privacy.html` ↔ `en/privacy.html`。
-- 改中文页的可见文案时同步改英文页；链接不要跨语言串（英文页指向 `/play/?lang=en`）。
+- 改中文页的可见文案时同步改英文页；链接不要跨语言串。
+- **进入游戏的链接必须显式带语言**：中文页 `.../play/?lang=zh-CN`，英文页 `.../play/?lang=en`。游戏的语言优先级是 `?lang` → localStorage → 浏览器语言 → 默认 zh-CN，不带参数时英文系统的人会直接进英文版。
 - 新增可索引页面时：
   1. 在对应语言目录加 HTML；
   2. 更新 `sitemap.xml`（首页与图鉴带 `hreflang` 组，长文页面单独一条）；
