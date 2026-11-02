@@ -13,6 +13,11 @@
   // 上一次成功的发布信息留在本机：接口偶发失败（解析抖动、断网）时按钮不该变灰。
   const CACHE_KEY = 'littlefield_release';
 
+  // 进入游戏要带上当前页面语言：release.json 给的是裸路径 /play/，
+  // 直接用它会把落地页的 ?lang= 丢掉，英文系统的人又会掉进英文版。
+  const pageLang = /^en/i.test(document.documentElement.lang || '') ? 'en' : 'zh-CN';
+  const withLang = url => url + (url.includes('?') ? '&' : '?') + 'lang=' + pageLang;
+
   const applyRelease = release => {
     const version = document.getElementById('release-version');
     const size = document.getElementById('release-size');
@@ -21,7 +26,11 @@
     document.querySelectorAll('[data-game-event]').forEach(link => {
       const available = link.dataset.gameEvent === 'apk_download' ? release.apk : release.web;
       link.setAttribute('aria-disabled', String(!available));
-      if (available) { link.href = absolute(available.url); link.removeAttribute('tabindex'); }
+      if (available) {
+        const url = absolute(available.url);
+        link.href = link.dataset.gameEvent === 'web_launch' ? withLang(url) : url;
+        link.removeAttribute('tabindex');
+      }
     });
     const checksum = document.querySelector('.checksum');
     if (checksum) checksum.hidden = !release.apk;
