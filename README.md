@@ -1,13 +1,13 @@
 # 田野之间 · 游戏落地页（Little Field Site）
 
-《田野之间》的**静态落地页站点**，一份源码发布到两个地址：
+《田野之间》的**静态落地页站点**。
 
 | 域名 | 谁在伺服 | 角色 |
 | --- | --- | --- |
-| <https://game.supuzz.com/> | 阿里云 ECS：`/var/www/littlefield` | **唯一主站**，canonical 指向这里 |
-| <https://game.supuzz.cn/> | 阿里云 ECS | 页面 301 到 `.com`；只保留游戏、下载、埋点接口 |
+| <https://game.supuzz.com/> | GitHub Pages（DNS `CNAME → supuzz.github.io`） | **官网**，canonical 指向这里 |
+| <https://game.supuzz.cn/> | 阿里云 ECS | 页面 301 到 `.com`；只保留游戏、下载、接口（游戏真正的容器） |
 
-> `game.supuzz.com` 的 DNS 目前仍 CNAME 到 `game.supuzz.cn`，两个域名都由同一台机器伺服。换成 GitHub Pages 是可选项（更快、零运维），需要时再动，见文末。
+两边是同一份源码，push 后自动发 Pages；`.cn` 那份只在需要更新 `/analytics.js` 时手动发（见「发布」）。
 
 中文在根目录、英文在 `en/`。
 
@@ -114,17 +114,11 @@ bash scripts/deploy.sh
 
 Nginx 配置在 `ops/nginx/`，**不会自动下发**——改配置要手动替换并 `nginx -t`，见 [ops/README.md](ops/README.md)。
 
-## 把域名切到 Pages 的步骤
+## 域名与存档
 
-`game.supuzz.com` 目前 CNAME 到 `game.supuzz.cn`（阿里云伺服）。要改用 Pages：
-
-1. 仓库 Settings → Pages → Source 选 **GitHub Actions**；
-2. 跑一次工作流，确认 `dist/` 发布成功；
-3. Settings → Pages → Custom domain 填 `game.supuzz.com`；
-4. DNS 把 `game.supuzz.com` 的 CNAME 从 `game.supuzz.cn` 改成 `supuzz.github.io`（建议先把 TTL 调成 600）；
-5. 等 GitHub 签发证书后勾 **Enforce HTTPS**。
-
-⚠️ **顺序不能反**：先开 Pages 再改 DNS，否则 `game.supuzz.com` 会直接打不开。切换后 `.com/play/`、`.com/downloads/` 会 404（Pages 没有后端），但页面里的按钮都指向 `.cn` 绝对地址，点击不受影响。
+- 官网在 `game.supuzz.com`（Pages），游戏跑在 `game.supuzz.cn`（阿里云），两者是**不同 origin**。
+- 玩家存档（localStorage）绑定 `game.supuzz.cn`。**不要为了命名好看把它换到 `box.supuzz.com` 之类的新域名**——2026-11-02 评估过，会让约 155 台设备（30 天）的农场归零，已决定不迁。
+- Android 不受域名影响：游戏包内置在 APK 里，origin 是 `appassets.androidplatform.net`。
 
 ## 发布游戏新版本
 
