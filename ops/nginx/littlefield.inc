@@ -20,7 +20,9 @@ location = /play {
 }
 location /play/ {
     limit_except GET HEAD { deny all; }
-    proxy_pass http://127.0.0.1:8080;
+    # 后端的游戏相关路由整体挂在 /game 前缀下（见 feedback-server 的
+    # registerGamePublishing），这里必须带上 /game/ 才是正确路径。
+    proxy_pass http://127.0.0.1:8080/game/play/;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $remote_addr;
@@ -29,7 +31,7 @@ location /play/ {
 }
 location /downloads/ {
     limit_except GET HEAD { deny all; }
-    proxy_pass http://127.0.0.1:8080;
+    proxy_pass http://127.0.0.1:8080/game/downloads/;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $remote_addr;
@@ -104,8 +106,7 @@ location ~ /\. { deny all; }
 # ------------------------------------------------------------------
 # 图标与截图：长缓存，文件名不含 hash，改图时换文件名或手动清缓存
 location ~* ^/assets/.*\.(svg|jpe?g|png|webp|gif|ico)$ {
-    expires 7d;
-    add_header Cache-Control "public";
+    add_header Cache-Control "public, max-age=604800" always;
     try_files $uri =404;
 }
 location / {
