@@ -23,6 +23,15 @@ DEPLOY_SSH_USER="${DEPLOY_SSH_USER:-root}"
 DEPLOY_SSH_PORT="${DEPLOY_SSH_PORT:-22}"
 DEPLOY_REMOTE_PATH="${DEPLOY_REMOTE_PATH:-/var/www/littlefield}"
 
+# 防呆：/usr/share/nginx/html 是 supuzz.cn 公司官网的目录，绝不能覆盖
+case "${DEPLOY_REMOTE_PATH%/}" in
+  ""|/|/usr/share/nginx/html)
+    echo "拒绝部署：DEPLOY_REMOTE_PATH=${DEPLOY_REMOTE_PATH} 不是本站专属目录" >&2
+    echo "本站默认 /var/www/littlefield；/usr/share/nginx/html 属于 supuzz.cn 公司官网。" >&2
+    exit 1
+    ;;
+esac
+
 RELOAD=0
 for arg in "$@"; do
   case "$arg" in
