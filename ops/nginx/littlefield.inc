@@ -112,7 +112,19 @@ location ~* ^/assets/.*\.(svg|jpe?g|png|webp|gif|ico)$ {
     add_header Cache-Control "public, max-age=604800" always;
     try_files $uri =404;
 }
+# /play/ 页面的 CSP 是 script-src 'self'，统计脚本必须由 .cn 自己返回，
+# 不能跟着下面那条 301 跳到 .com，否则会被 CSP 拦掉、统计静默丢失。
+location = /analytics.js {
+    add_header Cache-Control "public, max-age=300" always;
+    try_files $uri =404;
+}
+
 location / {
     limit_except GET HEAD { deny all; }
+    # .cn 只作为游戏与接口的入口，页面统一交给主域 .com（GitHub Pages）。
+    # .com 自身（DNS 切换前仍指向本机）不进这个分支，避免循环跳转。
+    if ($host = game.supuzz.cn) {
+        return 301 https://game.supuzz.com$request_uri;
+    }
     try_files $uri $uri/ =404;
 }

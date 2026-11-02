@@ -4,8 +4,8 @@
 
 | 域名 | 托管 | 角色 |
 | --- | --- | --- |
-| <https://game.supuzz.com/> | GitHub Pages | **主站**，canonical 指向这里 |
-| <https://game.supuzz.cn/> | 阿里云 ECS（Nginx 静态目录） | 镜像；游戏与接口也在这台 |
+| <https://game.supuzz.com/> | GitHub Pages | **唯一主站**，canonical 指向这里 |
+| <https://game.supuzz.cn/> | 阿里云 ECS | 页面 301 到 `.com`；只保留游戏、下载、埋点接口 |
 
 中文在根目录、英文在 `en/`。
 
@@ -43,7 +43,7 @@
 
 ## 与后端的边界
 
-Pages 只能托管静态文件，**没有反向代理**，所以动态能力一律写成 `.cn` 的绝对地址（`.cn` 上依旧可用）：
+`.cn` 上仍然保留这四类路径（其余页面一律 301 到 `.com`），所以动态能力写成 `.cn` 的绝对地址：
 
 | 地址 | 用途 | 由谁提供 |
 | --- | --- | --- |
@@ -54,11 +54,21 @@ Pages 只能托管静态文件，**没有反向代理**，所以动态能力一�
 | `https://game.supuzz.cn/api/game/support` 等 | 游戏内打赏、档案 | feedback-server |
 | `https://api.supuzz.cn/admin/*` | 后台（游戏发布、统计、打赏） | feedback-server，游戏域名上 404 |
 
-三条硬规则：
+`.cn` 上不会被重定向、必须留在本机的只有：
+
+| 路径 | 为什么不能跳 |
+| --- | --- |
+| `/play/` | 游戏的真实 origin，存档、CSP 都绑在这里 |
+| `/downloads/*` | APK 由后端下发 |
+| `/api/*` | 埋点与游戏接口 |
+| `/analytics.js` | `/play/` 的 CSP 是 `script-src 'self'`，跳到 `.com` 会被拦掉 |
+
+四条硬规则：
 
 1. **站内页面链接用根路径**（`/guide.html`），**后端能力用 `.cn` 绝对地址**。两者不能混。
 2. 埋点在 `.com` 上是**跨域**上报，浏览器会先发 `OPTIONS` 预检。`game.supuzz.cn` 的 Nginx 已放行三个埋点 location 的 `OPTIONS`（见 `ops/nginx/littlefield.inc`），删掉就会静默丢统计。
-3. `analytics.js` 会按 `location.hostname` 选接口地址：`.cn` 走同源，其它域名跨域到 `.cn`。它同时被后端注入到 `/play/` 的 HTML 里，改名或移动会同时影响两边。
+3. `/analytics.js` 在 `.cn` 上**不能**参与 301（见上表）。`ops/nginx/littlefield.inc` 里它是单独的 `location =`。
+4. `analytics.js` 会按 `location.hostname` 选接口地址：`.cn` 走同源，其它域名跨域到 `.cn`。它同时被后端注入到 `/play/` 的 HTML 里，改名或移动会同时影响两边。
 
 `sitemap.xml` 里除 `/play/` 一条用 `.cn` 外，其余都是 `.com`。
 

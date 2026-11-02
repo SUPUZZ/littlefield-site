@@ -1,6 +1,6 @@
 # 田野之间落地页 · 维护约定
 
-本仓库是 `game.supuzz.com`（GitHub Pages，主站）与 `game.supuzz.cn`（阿里云 ECS，镜像）的静态落地页，**没有构建步骤**，上线内容由 `scripts/stage.sh` 组装到 `dist/`。
+本仓库是 `game.supuzz.com`（GitHub Pages，唯一主站）的静态落地页；`game.supuzz.cn`（阿里云）只保留游戏与接口，其余页面 301 到 `.com`，**没有构建步骤**，上线内容由 `scripts/stage.sh` 组装到 `dist/`。
 
 ## 硬性边界
 
@@ -15,6 +15,7 @@
 - **游戏与下载必须用 `https://game.supuzz.cn/...` 绝对地址**（Pages 没有反向代理，写成 `/play/` 会 404）。
 - 普通页面之间的跳转仍用根路径（`/guide.html`），因为两个域名都是同一份文件树。
 - `sitemap.xml` 里只有 `/play/` 一条用 `.cn`，其余用 `.com`。
+- `.cn` 上除 `/play/`、`/downloads/`、`/api/`、`/analytics.js` 外一律 301 到 `.com`。往 `.cn` 加任何"需要在 .cn 直接打开"的路径，都要先改 `ops/nginx/littlefield.inc`。
 
 ## 页面与语言
 
