@@ -40,6 +40,31 @@ location /downloads/ {
 }
 
 # ------------------------------------------------------------------
+# 联合社区 · 共享世界：同一套《田野之间》构建，独立挂在 /shared/。
+# 共享 API 由 4190 端口的 community-field 服务提供，状态存本机 JSON。
+# ------------------------------------------------------------------
+location = /shared {
+    return 301 /shared/;
+}
+location /shared/ {
+    limit_except GET HEAD { deny all; }
+    root /var/www;
+    try_files $uri $uri/ /shared/index.html;
+    add_header Cache-Control "no-cache" always;
+}
+location /api/community/ {
+    limit_except GET HEAD POST PUT OPTIONS { deny all; }
+    client_max_body_size 6m;
+    proxy_pass http://127.0.0.1:4190;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_read_timeout 60s;
+}
+
+# ------------------------------------------------------------------
 # 埋点与游戏 API
 # 落地页自 2026-11 起主域是 game.supuzz.com（GitHub Pages），埋点跨域上报，
 # 因此下面三个 location 必须放行 OPTIONS，否则浏览器预检会被 403 拦掉，

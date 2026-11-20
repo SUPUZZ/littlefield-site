@@ -8,8 +8,8 @@
 规则：
   - 站内绝对路径（以 / 开头）从仓库根目录解析，相对路径按所在页面解析；
   - 以目录结尾的路径按 index.html 处理（/en/ -> en/index.html）；
-  - /play、/downloads、/api 由后端提供，只校验前缀白名单，不要求文件存在；
-  - sitemap.xml 里的 game.supuzz.cn 地址必须能落到真实页面，或者属于上面三个前缀。
+  - /play、/downloads、/api、/shared 由后端提供，只校验前缀白名单，不要求文件存在；
+  - sitemap.xml 里的 game.supuzz.cn 地址必须能落到真实页面，或者属于上面的后端前缀。
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ import xml.etree.ElementTree as ET
 from urllib.parse import urlparse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BACKEND_PREFIXES = ("/play", "/downloads", "/api")
+BACKEND_PREFIXES = ("/play", "/downloads", "/api", "/shared")
 SKIP_SCHEMES = ("//", "mailto:", "tel:", "data:", "javascript:")
 # 两个域名伺服同一份文件；.cn 额外承载后端路径，所以按路径判断而不是按域名。
 OWN_HOSTS = {"game.supuzz.cn", "game.supuzz.com"}

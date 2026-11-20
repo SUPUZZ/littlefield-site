@@ -27,6 +27,7 @@
   // 直接用它会把落地页的 ?lang= 丢掉，英文系统的人又会掉进英文版。
   const pageLang = /^en/i.test(document.documentElement.lang || '') ? 'en' : 'zh-CN';
   const withLang = url => url + (url.includes('?') ? '&' : '?') + 'lang=' + pageLang;
+  const communityHref = () => apiOrigin + '/shared/?community=1&lang=' + pageLang;
 
   let releaseInfo = null;
   let communityReady = false;
@@ -34,12 +35,16 @@
   const updateCommunityEntry = () => {
     const link = document.querySelector('[data-community]');
     if (!link) return;
-    const ready = communityReady && !!releaseInfo?.web;
+    const ready = communityReady;
     const label = link.querySelector('[data-community-label]');
     if (label) label.textContent = ready ? copy.communityReady : copy.communitySoon;
     link.setAttribute('aria-disabled', String(!ready));
-    if (ready) link.removeAttribute('tabindex');
-    else link.setAttribute('tabindex', '-1');
+    if (ready) {
+      link.href = communityHref();
+      link.removeAttribute('tabindex');
+    } else {
+      link.setAttribute('tabindex', '-1');
+    }
     const note = document.getElementById('community-status');
     if (note) note.textContent = ready ? copy.communityReadyNote : copy.communityPendingNote;
   };
@@ -52,13 +57,15 @@
     if (size) size.textContent = release.apk ? (release.apk.size / 1024 / 1024).toFixed(1) + ' MB' : copy.pending;
     document.querySelectorAll('[data-game-event]').forEach(link => {
       const isCommunity = link.dataset.community === '1';
-      const available = isCommunity ? (communityReady && release.web) : (link.dataset.gameEvent === 'apk_download' ? release.apk : release.web);
+      const available = isCommunity ? communityReady : (link.dataset.gameEvent === 'apk_download' ? release.apk : release.web);
       link.setAttribute('aria-disabled', String(!available));
       if (available) {
-        const url = absolute(available.url);
-        link.href = link.dataset.gameEvent === 'web_launch'
-          ? withLang(url) + (isCommunity ? '&community=1' : '')
-          : url;
+        if (isCommunity) {
+          link.href = communityHref();
+        } else {
+          const url = absolute(available.url);
+          link.href = link.dataset.gameEvent === 'web_launch' ? withLang(url) : url;
+        }
         link.removeAttribute('tabindex');
       }
     });

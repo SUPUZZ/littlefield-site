@@ -5,7 +5,7 @@
 ## 硬性边界
 
 - 只写静态资源。不要引入打包器、框架、Node 构建流程或 `node_modules`；改完直接刷新浏览器就能看到效果。
-- 不实现后端能力。`/play/`、`/downloads/*`、`/api/*` 都由 `feedback-server` 提供（在 `.cn` 上），这里只写指向它们的链接，不要在本仓库放同名目录去"接管"这些路径。
+- 不实现后端能力。`/play/`、`/downloads/*`、`/api/*` 由 `feedback-server` 提供（在 `.cn` 上），`/shared/` 与 `/api/community/*` 由独立的 community-field 服务提供；这里只写指向它们的链接，不要在本仓库放同名目录去"接管"这些路径。
 - 新增上线文件必须同时加进 `scripts/stage.sh` 的白名单，否则不会出现在 `dist/` 里。
 - 不动 `analytics.js` 的接口路径与事件名（`apk_download`、`web_launch`、加载成功等）。后端在 `/play/` 的 HTML 里注入同一个文件，改动会同时影响落地页与游戏内统计。
 
@@ -15,7 +15,7 @@
 - **游戏与下载必须用 `https://game.supuzz.cn/...` 绝对地址**（Pages 没有反向代理，写成 `/play/` 会 404）。
 - 普通页面之间的跳转仍用根路径（`/guide.html`），因为两个域名都是同一份文件树。
 - `sitemap.xml` 里只有 `/play/` 一条用 `.cn`，其余用 `.com`。
-- `.cn` 上除 `/play/`、`/downloads/`、`/api/`、`/analytics.js`、`/release.json` 外一律 301 到 `.com`。往 `.cn` 加任何"需要在 .cn 直接打开"的路径，都要先改 `ops/nginx/littlefield.inc`。
+- `.cn` 上除 `/play/`、`/downloads/`、`/api/`、`/shared/`、`/analytics.js`、`/release.json` 外一律 301 到 `.com`。往 `.cn` 加任何"需要在 .cn 直接打开"的路径，都要先改 `ops/nginx/littlefield.inc`。
 
 ## 页面与语言
 
