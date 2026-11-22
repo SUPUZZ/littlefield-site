@@ -1,0 +1,16 @@
+{
+  "name": "田野之间 Little Field",
+  "short_name": "田野之间",
+  "description": "从种田到上市的模拟经营游戏",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fff8e8",
+  "theme_color": "#fff8e8",
+  "icons": [
+    { "src": "/assets/favicon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

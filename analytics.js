@@ -1,5 +1,9 @@
 (() => {
   'use strict';
+  // 同一个页面可能被注入两次（例如 /play/ 的服务端注入与共享页的本地加载），
+  // 只让第一份生效，避免 PV 与时长被重复上报。
+  if (window.__littlefieldAnalyticsLoaded) return;
+  window.__littlefieldAnalyticsLoaded = true;
   // .com 是 GitHub Pages 上的纯静态镜像，接口在 .cn；.cn 自身仍走同源，避免多余预检。
   const apiOrigin = location.hostname === 'game.supuzz.cn' ? '' : 'https://game.supuzz.cn';
   const endpoint = apiOrigin + '/api';
@@ -44,7 +48,7 @@
   window.addEventListener('pagehide', () => { flush(); visibleSince = null; });
   window.addEventListener('pageshow', () => { if (!document.hidden && visibleSince === null) visibleSince = performance.now(); });
   setInterval(flush, 30000);
-  if (location.pathname.startsWith('/play/')) {
+  if (/^\/(?:play|shared)\//.test(location.pathname)) {
     let attempts = 0;
     const timer = setInterval(() => {
       if (window.LittleField && window.LittleField.rendering.frames > 0 && document.getElementById('loading')?.classList.contains('dismissed')) { clearInterval(timer); track('game_ready'); }

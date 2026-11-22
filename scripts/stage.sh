@@ -11,7 +11,7 @@ mkdir -p "$DIST"
 
 cd "$ROOT"
 cp ./*.html "$DIST"/
-cp robots.txt sitemap.xml \
+cp robots.txt sitemap.xml favicon.ico manifest.json \
    site.css comic.css stories.css \
    site.js guide.js analytics.js "$DIST"/
 cp -R assets en "$DIST"/

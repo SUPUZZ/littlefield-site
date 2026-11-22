@@ -35,6 +35,8 @@
 - 图片放 `assets/`，新增图片先压到合适尺寸并补进 `assets/README.md` 的来源说明。
 - 首页与图鉴页都有 `data-game-event` 埋点属性，新增下载/游玩按钮时沿用 `apk_download` / `web_launch`，不要自造事件名。
 - 页面上的版本号、按钮禁用态都由 `site.js` 拉 `/release.json` 决定。这个接口挂在 `.cn`，跨域取；取不到时按钮会**保持置灰**（不是样式坏了）。改 `site.js` 或 Nginx 时务必保留这条路径。
+- 每个可收藏页面都要带完整图标组：根目录 `/favicon.ico`、`/assets/favicon-16x16.png`、`/assets/favicon-32x32.png`、`/assets/apple-touch-icon.png` 与 `/manifest.json`（英文页用 `/en/manifest.json`）。只声明 SVG 图标时，部分浏览器和收藏夹不会显示图标；新增页面照抄首页 `<head>`。
+- `/shared/` 由 Nginx 直接托管，后端不会注入统计。游戏构建里的 `shared-analytics.js` 只在路径以 `/shared/` 开头时加载本站 `/analytics.js`；`/play/` 仍由服务端注入。不要改成无条件加载，否则 `/play/` 会重复上报 PV，离线 APK 也会尝试请求统计接口。
 - `.com` 上的埋点是跨域上报，依赖 `game.supuzz.cn` 的 Nginx 放行 `OPTIONS`；不要顺手把 `ops/nginx/littlefield.inc` 里那三个 `limit_except` 改回只允许 POST。
 
 ## 提交前自检
