@@ -13,6 +13,7 @@
 .story-heading .eyebrow{color:var(--green);margin-bottom:18px}
 .story h1{font-size:clamp(30px,4vw,44px);line-height:1.5;letter-spacing:0;margin-bottom:24px}
 .story-intro{font-size:17px;line-height:2;color:var(--muted)}
+.story-dates{font-size:11px;line-height:1.9;letter-spacing:.4px;color:#8a927c;margin:18px 0 0}
 .story-toc{margin:32px 0 40px;padding:24px 30px;background:#e7ecdc;border-radius:10px;font-size:14px;line-height:2}
 .story-toc ol{padding-left:22px;margin-bottom:0}
 .story article section{margin-block:38px;scroll-margin-top:30px}

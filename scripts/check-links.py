@@ -9,7 +9,8 @@
   - 站内绝对路径（以 / 开头）从仓库根目录解析，相对路径按所在页面解析；
   - 以目录结尾的路径按 index.html 处理（/en/ -> en/index.html）；
   - /play、/downloads、/api、/shared 由后端提供，只校验前缀白名单，不要求文件存在；
-  - sitemap.xml 里的 game.supuzz.cn 地址必须能落到真实页面，或者属于上面的后端前缀。
+  - sitemap.xml 只能列 game.supuzz.com 页面（协议要求 <loc> 与 sitemap 同 host），
+    且不能包含 /play/ 等后端路径。
 """
 
 from __future__ import annotations
@@ -93,14 +94,11 @@ def check_sitemap() -> int:
     for loc in tree.getroot().iterfind(".//s:loc", ns):
         url = (loc.text or "").strip()
         parsed = urlparse(url)
-        if parsed.netloc not in OWN_HOSTS:
-            errors.append(f"sitemap 域名不属于本站: {url}")
+        if parsed.netloc != "game.supuzz.com":
+            errors.append(f"sitemap 只能列 game.supuzz.com 页面: {url}")
             continue
-        # 后端地址（/play/ 等）只存在于 .cn，不能写成 .com
         if is_backend_path(parsed.path or "/"):
-            count += 1
-            if parsed.netloc != "game.supuzz.cn":
-                errors.append(f"sitemap 中的后端地址必须是 game.supuzz.cn: {url}")
+            errors.append(f"sitemap 不能包含后端路径: {url}")
             continue
         target = resolve("sitemap.xml", parsed.path or "/")
         count += 1

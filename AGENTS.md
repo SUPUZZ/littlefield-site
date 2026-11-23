@@ -1,4 +1,4 @@
-# 田野之间落地页 · 维护约定
+# SUPUZZ 田园落地页 · 维护约定
 
 本仓库是 `game.supuzz.com`（唯一主站）的静态落地页；`game.supuzz.cn` 只保留游戏与接口，其余页面 301 到 `.com`，**没有构建步骤**，push `main` 会自动经 `scripts/stage.sh` 生成 `dist/` 并发布到 GitHub Pages。
 
@@ -14,8 +14,14 @@
 - **canonical / og:url / og:image / hreflang / sitemap / robots 的 `Sitemap:` 一律用 `https://game.supuzz.com`**（主站）。
 - **游戏与下载必须用 `https://game.supuzz.cn/...` 绝对地址**（Pages 没有反向代理，写成 `/play/` 会 404）。
 - 普通页面之间的跳转仍用根路径（`/guide.html`），因为两个域名都是同一份文件树。
-- `sitemap.xml` 里只有 `/play/` 一条用 `.cn`，其余用 `.com`。
+- `sitemap.xml` 只能列 `game.supuzz.com` 同源页面（Google 要求 `<loc>` 与 sitemap 同 host）；`/play/` 在 `.cn` 上，靠站内链接发现，不要写进 `.com` 的 sitemap。改页面时同步更新 `<lastmod>`。
 - `.cn` 上除 `/play/`、`/downloads/`、`/api/`、`/shared/`、`/analytics.js`、`/release.json` 外一律 301 到 `.com`。往 `.cn` 加任何"需要在 .cn 直接打开"的路径，都要先改 `ops/nginx/littlefield.inc`。
+
+## 品牌命名
+
+- 正式名：英文 **SUPUZZ Garden**，中文 **SUPUZZ 田园**；副标题 **Create Your Little World / 创造你的小小世界**。
+- 历史名 **Little Field / 田野之间** 只用于兼容：首页 `<title>` 括号、meta description 的 “Formerly known as”、JSON-LD `alternateName`、首页更名说明与旧文标题后缀。不要在其他可见文案里混用。
+- 内部标识不要跟着改名：`littlefield_*` 的 localStorage / 缓存键、`window.LittleField`、埋点里的 `brandName: 'littlefield'`、仓库与目录路径都保持原样。
 
 ## 页面与语言
 
@@ -24,8 +30,10 @@
 - **进入游戏的链接必须显式带语言**：中文页 `.../play/?lang=zh-CN`，英文页 `.../play/?lang=en`。游戏的语言优先级是 `?lang` → localStorage → 浏览器语言 → 默认 zh-CN，不带参数时英文系统的人会直接进英文版。
 - 新增可索引页面时：
   1. 在对应语言目录加 HTML；
-  2. 更新 `sitemap.xml`（首页与图鉴带 `hreflang` 组，长文页面单独一条）；
-  3. 检查 `robots.txt` 是否需要新增 `Disallow`（`privacy.html` 目前不收录）。
+  2. 更新 `sitemap.xml`（首页与图鉴带 `hreflang` 组，长文页面单独一条），并更新该页 `<lastmod>`；
+  3. 可索引页加 `<meta name="robots" content="max-image-preview:large">`；
+  4. 文章页补 `Article` + `BreadcrumbList` JSON-LD（参考现有长文）；
+  5. `privacy.html` 用页面内 `noindex`，不要加 `robots.txt` 的 `Disallow`。
 - 站内链接一律用根路径（以 `/` 开头），不要用相对路径——页面分布在根目录与 `en/` 两处，相对路径会串。
 
 ## 样式与资源

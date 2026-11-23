@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 部署田野之间静态落地页到 ECS。
+# 部署 SUPUZZ 田园（原 Little Field）静态落地页到 ECS。
 #
 # 用法：
 #   bash scripts/deploy.sh            # 只上传

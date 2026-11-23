@@ -1,4 +1,4 @@
-/* Little Field: warm paper, woodland colours and ink outlines, shared with the game. */
+/* SUPUZZ Garden: warm paper, woodland colours and ink outlines, shared with the game. */
 :root {
   --paper:#fff8e8; --ink:#453c2c; --green:#42664d; --muted:#766b54;
   --line:#d7c7a5; --accent:#e9c56d; --ink-line:#65563d;
@@ -16,6 +16,7 @@ body { background:var(--paper-grain) 0 0 / 6px 6px,var(--paper); }
 .nav-lang { background:#fffaf0; color:var(--muted); border-color:#bdac86; border-radius:7px; }
 .nav-play { background:#edcf83; border:1.5px solid var(--ink-line); border-radius:8px 5px 9px 5px; box-shadow:2px 3px 0 var(--ink-line); font-weight:700; }
 .nav-play:hover { background:#f4dc9c; }
+.nav-play .nav-play-short { display:none; margin-left:0; }
 .hero { position:relative; isolation:isolate; gap:44px; padding-top:64px; padding-bottom:88px; }
 .hero:before { content:""; position:absolute; z-index:-1; pointer-events:none; top:-1px; bottom:0; left:50%; width:100vw; transform:translateX(-50%); background:url('/assets/countryside.svg') center bottom / cover no-repeat; opacity:.64; }
 .hero .eyebrow { color:#6d774f; font-size:11px; letter-spacing:1.2px; }
@@ -25,6 +26,11 @@ h1 { line-height:1.4; letter-spacing:1px; }
 h1 span { color:var(--green); box-shadow:inset 0 -.28em #edce7a80; }
 h1 span:after { display:none; }
 .intro { color:#71664f; line-height:2.05; }
+/* 品牌更名：主标题第二行与首页的「原名」说明。 */
+.hero h1 .h1-line { display:block; margin-top:10px; font-size:clamp(22px,2.4vw,36px); line-height:1.55; letter-spacing:.5px; box-shadow:none; white-space:normal; }
+.rebrand-note { display:inline-flex; align-items:center; flex-wrap:wrap; gap:4px 6px; margin:0 0 22px; padding:7px 13px; border:1px dashed #b9a97f; border-radius:8px 5px 9px 5px; background:#fffaf0; color:#7a7059; font-size:11px; line-height:1.7; letter-spacing:.2px; }
+.rebrand-note>span { color:#9a8b6a; }
+.rebrand-note b { color:var(--green); font-weight:700; }
 .button { border:1.5px solid var(--ink-line); border-radius:8px 5px 9px 5px; box-shadow:2px 3px 0 var(--ink-line); font-weight:700; }
 .button:hover { transform:translateY(-2px); }
 .button:active { transform:translate(1px,1px); box-shadow:1px 1px 0 var(--ink-line); }
@@ -101,10 +107,27 @@ footer { border-top:1.5px solid #b5a57e; }
   .field-note { left:-8px; padding:14px 16px; }
   .site-header nav { gap:20px; }
 }
-@media(max-width:760px) {
+@media(max-width:900px) {
+  /* 新品牌名更长：平板以下收成单行，CTA 用短标签，避免挤爆头部。 */
   .site-header nav { gap:12px; }
+  .brand { font-size:17px; }
+  .brand small { display:none; }
+  .brand, .brand span, .nav-play { white-space:nowrap; }
+  .nav-play { padding:9px 11px; font-size:11px; }
+  .nav-play span { margin-left:8px; }
+  .nav-play .nav-play-full { display:none; }
+  .nav-play .nav-play-short { display:inline; margin-left:0; }
+}
+@media(min-width:761px) and (max-width:900px) {
+  /* 平板窄栏下品牌全名容易折行，单独收一档字号。 */
+  h1 { font-size:clamp(32px,4.2vw,38px); }
+}
+@media(max-width:760px) {
+  .site-header nav { gap:10px; }
   .hero { padding-top:32px; padding-bottom:65px; gap:34px; }
   .hero .eyebrow { font-size:10px; letter-spacing:.5px; }
+  .hero h1 .h1-line { font-size:22px; margin-top:8px; }
+  .rebrand-note { margin-bottom:18px; padding:6px 11px; font-size:10px; }
   .hero-visual { width:100%; padding:0 5px 30px 0; }
   .photo-frame { aspect-ratio:4/3; box-shadow:5px 6px 0 #d0bb8f; }
   .photo-tag { left:11px; top:12px; font-size:9px; padding:8px 10px; }
@@ -117,6 +140,11 @@ footer { border-top:1.5px solid #b5a57e; }
   .life { padding-block:52px; }
   .capital-preview { box-shadow:3px 4px 0 #d2c199; }
   .hero-notes { gap:12px; font-size:10px; }
+}
+@media(max-width:340px) {
+  .brand { font-size:16px; }
+  .site-header nav { gap:8px; }
+  .nav-play { padding:8px 9px; }
 }
 @media(prefers-reduced-motion:reduce) {
   :root { scroll-behavior:auto; }

@@ -1,6 +1,8 @@
-# 田野之间 · 游戏落地页（Little Field Site）
+# SUPUZZ 田园 · 游戏落地页（原 Little Field Site）
 
-《田野之间》的**静态落地页站点**。
+**SUPUZZ 田园**（英文 **SUPUZZ Garden**，副标题 *Create Your Little World*，原名《田野之间 Little Field》）的**静态落地页站点**。
+
+> 更名兼容：页面 URL 不变，首页 Title 保留 `(Little Field)`，描述与结构化数据保留 `alternateName`（Little Field / 田野之间）；游戏存档、埋点键名与仓库目录名一律未改。
 
 | 域名 | 谁在伺服 | 角色 |
 | --- | --- | --- |
@@ -74,7 +76,16 @@
 3. `/analytics.js` 在 `.cn` 上**不能**参与 301（见上表）。`ops/nginx/littlefield.inc` 里它是单独的 `location =`。
 4. `analytics.js` 会按 `location.hostname` 选接口地址：`.cn` 走同源，其它域名跨域到 `.cn`。它同时被后端注入到 `/play/` 的 HTML 里，改名或移动会同时影响两边。
 
-`sitemap.xml` 里除 `/play/` 一条用 `.cn` 外，其余都是 `.com`。
+`sitemap.xml` 只列 `game.supuzz.com` 同源页面（Google 要求 sitemap 里的 `<loc>` 与 sitemap 同 host）；`/play/` 在 `.cn` 上，靠站内链接发现，不写进 `.com` 的 sitemap。改页面时同步更新对应 `<lastmod>`。
+
+Google SEO 的固定配置：
+
+- 可索引页都带 `<meta name="robots" content="max-image-preview:large">`，允许 Google 展示大图预览。
+- 首页 JSON-LD 同时有 `WebSite`（站名 / `alternateName`）与 `VideoGame`；长文用 `Article` + `BreadcrumbList`。
+- `privacy.html` 用页面内的 `noindex`，**不要**在 `robots.txt` 里 `Disallow`，否则 Google 抓不到 noindex。
+- canonical / `og:url` / `hreflang` / sitemap 全部指向 `https://game.supuzz.com`，`.cn` 只做游戏与接口。
+
+Search Console 的站点验证、sitemap 提交和 URL 检查属于账号操作，不在仓库内；代码侧只保证可抓取、可索引和结构化数据正确。
 
 ## 本地预览
 

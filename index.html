@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="max-image-preview:large">
   <meta name="theme-color" content="#fff8e8">
-  <title>田野之间 Little Field｜从种田到上市的模拟经营游戏</title>
-  <meta name="description" content="田野之间是一款融合种田、村庄建设与上市模拟的经营游戏。种菜、捕鱼、招募伙伴，积累金币后探索虚构股票市场；在游戏里理解成本、利润与风险，支持网页版和 Android。">
+  <title>SUPUZZ 田园（Little Field）｜免费在线种田经营游戏</title>
+  <meta name="description" content="SUPUZZ 田园（原《田野之间》）免费在线游玩：种菜、捕鱼、建村庄、探索经营，还能把农场带进资本市场。支持网页版与 Android。">
   <link rel="canonical" href="https://game.supuzz.com/">
   <link rel="alternate" hreflang="zh-CN" href="https://game.supuzz.com/">
   <link rel="alternate" hreflang="en" href="https://game.supuzz.com/en/">
@@ -13,12 +14,14 @@
   <meta property="og:locale" content="zh_CN">
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="田野之间 Little Field｜从种田到上市的模拟经营游戏">
-  <meta property="og:description" content="田野之间是一款融合种田、村庄建设与上市模拟的经营游戏。种菜、捕鱼、招募伙伴，积累金币后探索虚构股票市场；在游戏里理解成本、利润与风险，支持网页版和 Android。">
+  <meta property="og:site_name" content="SUPUZZ 田园">
+  <meta property="og:title" content="SUPUZZ 田园 – 创造你的小小世界">
+  <meta property="og:description" content="SUPUZZ 田园（原《田野之间》）免费在线游玩：种菜、捕鱼、建村庄、探索经营，还能把农场带进资本市场。支持网页版与 Android。">
   <meta property="og:url" content="https://game.supuzz.com/">
   <meta property="og:image" content="https://game.supuzz.com/assets/farm-preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SUPUZZ 田园：乡间小屋、菜田和农场伙伴">
   <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" href="/assets/icon.svg" type="image/svg+xml" sizes="any">
   <link rel="icon" href="/assets/favicon-16x16.png" type="image/png" sizes="16x16">
@@ -26,31 +29,34 @@
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://game.supuzz.cn" crossorigin>
+  <link rel="preload" as="image" href="/assets/farm-comic.jpg" fetchpriority="high">
   <link rel="stylesheet" href="/site.css">
   <link rel="stylesheet" href="/stories.css">
   <script defer src="/analytics.js"></script>
   <script defer src="/site.js"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"田野之间","alternateName":"Little Field","url":"https://game.supuzz.com/","inLanguage":"zh-CN","genre":["模拟经营","种田游戏","农场经营","上市模拟"],"playMode":["SinglePlayer"],"gamePlatform":["Android","Browser"],"operatingSystem":"Android 7.0+","publisher":{"@type":"Organization","name":"SUPUZZ"},"description":"田野之间是一款融合种田、村庄建设与上市模拟的经营游戏。种菜、捕鱼、招募伙伴，积累金币后探索虚构股票市场；在游戏里理解成本、利润与风险，支持网页版和 Android。"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://game.supuzz.com/#website","url":"https://game.supuzz.com/","name":"SUPUZZ 田园","alternateName":["SUPUZZ Garden"],"inLanguage":"zh-CN"},{"@type":"VideoGame","name":"SUPUZZ 田园","alternateName":["SUPUZZ Garden","Little Field","田野之间"],"slogan":"创造你的小小世界","url":"https://game.supuzz.com/","inLanguage":"zh-CN","genre":["模拟经营","种田游戏","农场经营","上市模拟"],"playMode":["SinglePlayer"],"gamePlatform":["Android","Browser"],"operatingSystem":"Android 7.0+","publisher":{"@type":"Organization","name":"SUPUZZ","logo":{"@type":"ImageObject","url":"https://game.supuzz.com/assets/favicon-512.png","width":512,"height":512}},"description":"SUPUZZ 田园（原《田野之间》）是一个温馨的创造世界：种菜、捕鱼、建村庄、探索经营，还能把农场带进资本市场。","@id":"https://game.supuzz.com/#videogame","applicationCategory":"GameApplication","isAccessibleForFree":true,"image":"https://game.supuzz.com/assets/farm-preview.jpg","screenshot":"https://game.supuzz.com/assets/farm-comic.jpg","isPartOf":{"@id":"https://game.supuzz.com/#website"}}]}</script>
   <link rel="stylesheet" href="/comic.css">
 </head>
 <body>
   <a class="skip" href="#main">跳到正文</a>
   <header class="site-header wrap">
-    <a class="brand" href="/" aria-label="田野之间首页"><img src="/assets/icon.svg" alt="" width="36" height="36"><span>田野之间<small>LITTLE FIELD</small></span></a>
-    <nav aria-label="主导航"><a href="#life">田园日常</a><a href="/guide.html">田园图鉴</a><a href="#stories">玩法与经营</a><a href="#community">共享体验</a><a class="nav-lang" href="/en/" hreflang="en" lang="en" title="Switch to English">EN</a><a class="nav-play" href="https://game.supuzz.cn/play/?lang=zh-CN" data-game-event="web_launch" aria-disabled="true" tabindex="-1">开始种田 <span aria-hidden="true">↗</span></a></nav>
+    <a class="brand" href="/" aria-label="SUPUZZ 田园首页"><img src="/assets/icon.svg" alt="" width="36" height="36"><span>SUPUZZ 田园<small>SUPUZZ GARDEN</small></span></a>
+    <nav aria-label="主导航"><a href="#life">田园日常</a><a href="/guide.html">田园图鉴</a><a href="#stories">玩法与经营</a><a href="#community">共享体验</a><a class="nav-lang" href="/en/" hreflang="en" lang="en" title="Switch to English">EN</a><a class="nav-play" href="https://game.supuzz.cn/play/?lang=zh-CN" data-game-event="web_launch" aria-disabled="true" tabindex="-1"><span class="nav-play-full">开始种田</span><span class="nav-play-short">开始</span> <span aria-hidden="true">↗</span></a></nav>
   </header>
   <main id="main">
     <section class="hero wrap">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="sun" aria-hidden="true">☀</span> 田野之间 · 从种田到上市的模拟经营游戏</p>
-        <h1>从种田经营，<br>到<span>农场上市。</span></h1>
-        <p class="intro">离开一会儿忙碌的世界。<br>种菜、捕鱼、盖一间小屋，<br>和伙伴一起，把小小农场慢慢变成家。<br>从田园种植到后期上市，探索经营的不同可能。</p>
+        <p class="eyebrow"><span class="sun" aria-hidden="true">☀</span> SUPUZZ 田园 · 从种田到上市的模拟经营游戏</p>
+        <h1>SUPUZZ 田园<br> <span class="h1-line">– 创造你的小小世界</span></h1>
+        <p class="intro">一个可以建造、探索、种植与游玩的温馨世界。<br>种菜、捕鱼、盖一间小屋，<br>和伙伴一起，把小小田园慢慢变成家。<br>从田园种植到后期上市，探索经营的不同可能。</p>
+        <p class="rebrand-note"><span>原名</span>《田野之间 Little Field》，现更名为 <b>SUPUZZ 田园</b>。</p>
         <div class="actions"><a class="button primary" href="https://game.supuzz.cn/downloads/latest.apk" download data-game-event="apk_download" aria-disabled="true" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>下载 Android APK</a><a class="button secondary" href="https://game.supuzz.cn/play/?lang=zh-CN" data-game-event="web_launch" aria-disabled="true" tabindex="-1">打开网页版 <span aria-hidden="true">↗</span></a></div>
         <p class="release-note">Android 7.0+ <span>·</span> <span id="release-version">读取发布信息中</span> <span>·</span> <span id="release-size"></span></p>
         <div class="hero-notes"><span><i aria-hidden="true">✓</i> 无需注册</span><span><i aria-hidden="true">✓</i> 本机存档</span><span><i aria-hidden="true">✓</i> Android 离线畅玩</span></div>
       </div>
       <div class="hero-visual">
-        <div class="photo-frame"><img src="/assets/farm-comic.jpg" alt="田野之间游戏实景：乡间小屋、菜田和正在忙碌的伙伴" width="1440" height="1080" fetchpriority="high"><span class="photo-tag"><span aria-hidden="true">●</span> 来自你未来的小农场</span></div>
+        <div class="photo-frame"><img src="/assets/farm-comic.jpg" alt="SUPUZZ 田园游戏实景：乡间小屋、菜田和正在忙碌的伙伴" width="1440" height="1080" fetchpriority="high"><span class="photo-tag"><span aria-hidden="true">●</span> 来自你未来的小农场</span></div>
         <div class="field-note"><span aria-hidden="true">🌱</span><div>今天也有好好生长<small>慢一点，收获会来的。</small></div></div>
         <span class="scribble" aria-hidden="true">your little escape ↗</span>
       </div>
@@ -60,7 +66,7 @@
       <div class="community-copy">
         <p class="eyebrow">SHARED FIELD · 联合社区</p>
         <h2 id="community-title">同一片田，<br>大家一起种。</h2>
-        <p class="community-intro">联合社区是《田野之间》的共享体验：地图、场景、仓库、伙伴和 <strong>100 亿社区公库</strong>由服务器统一保存。所有人操作同一片农田，操作保存后其他玩家稍后拉取。</p>
+        <p class="community-intro">联合社区是《SUPUZZ 田园》的共享体验：地图、场景、仓库、伙伴和 <strong>100 亿社区公库</strong>由服务器统一保存。所有人操作同一片农田，操作保存后其他玩家稍后拉取。</p>
         <div class="actions"><a class="button primary" href="https://game.supuzz.cn/shared/?community=1&amp;lang=zh-CN" data-game-event="web_launch" data-community="1" aria-disabled="true" tabindex="-1"><span data-community-label>共享体验 · 即将开放</span> <span aria-hidden="true">↗</span></a></div>
         <p class="community-note" id="community-status">共享服务尚未部署，入口会在服务上线后自动开放。</p>
       </div>
@@ -73,7 +79,7 @@
       </aside>
     </section>
     <section class="life wrap" id="life">
-      <div class="section-heading"><div><p class="eyebrow">LIFE IN LITTLE FIELD</p><h2>小小田野，<br>装得下好多好日子。</h2></div><p>没有复杂的开始。<br>点一点，安排伙伴出发，<br>看一座村庄在眼前生长。</p></div>
+      <div class="section-heading"><div><p class="eyebrow">LIFE IN SUPUZZ GARDEN</p><h2>小小田野，<br>装得下好多好日子。</h2></div><p>没有复杂的开始。<br>点一点，安排伙伴出发，<br>看一座村庄在眼前生长。</p></div>
       <div class="features">
         <article><img class="feature-image" src="/assets/farm-cultivate.jpg" alt="漫画版游戏实景：菜田里的胡萝卜与作物" width="720" height="480" loading="lazy"><span class="feature-number">01 / CULTIVATE</span><h3>种下属于你的丰收</h3><p>开垦、播种、浇水、收获。从胡萝卜到南瓜，在晴雨交替中照料每一块菜田。</p></article>
         <article><img class="feature-image" src="/assets/farm-explore.jpg" alt="漫画版游戏实景：池塘、鸭子与岸边树木" width="720" height="480" loading="lazy"><span class="feature-number">02 / EXPLORE</span><h3>去更远的地方看看</h3><p>拨开迷雾，发现林地、河谷和渔场。建好码头，让伙伴乘着小船满载而归。</p></article>
@@ -116,13 +122,13 @@
       </div>
     </section>
     <section class="stories wrap" id="stories" aria-labelledby="stories-title">
-      <div class="section-heading"><div><p class="eyebrow">PLAY · BUILD · UNDERSTAND</p><h2 id="stories-title">好玩又奇特的游戏，<br>从种田聊到经营。</h2></div><p>想轻松种菜，还是好奇农场如何上市？<br>沿着你的问题，认识田野之间。</p></div>
-      <div class="story-cards"><article><p class="eyebrow">01 / FIELD STORIES</p><h3><a href="/farming-game.html">好玩又奇特的种田游戏：从一块菜田到上市农场</a></h3><p>想找好玩又奇特的种田游戏？田野之间把种菜、捕鱼、村庄建造和后期上市模拟放进同一座农场，了解新手经营路线和网页版玩法。</p><a class="story-card-link" href="/farming-game.html">种田游戏怎么玩 <span aria-hidden="true">→</span></a></article>
-        <article><p class="eyebrow">02 / FIELD STORIES</p><h3><a href="/farm-ipo.html">农场上市模拟游戏：从种田经营到融资上市</a></h3><p>田野之间农场上市模拟玩法：种田积累金币，达到 10 亿 G 解锁资本市场，理解上市融资、增发、回购与经营利润的区别。</p><a class="story-card-link" href="/farm-ipo.html">农场上市模拟 <span aria-hidden="true">→</span></a></article>
-        <article><p class="eyebrow">03 / FIELD STORIES</p><h3><a href="/why-stock-trades-lose.html">为啥炒股总是亏钱？用模拟游戏看懂交易成本与波动</a></h3><p>为啥炒股总是亏钱？从田野之间的虚构股票交易出发，用简单例子理解交易费用、涨跌幅、追涨与持仓盈亏，学习复盘游戏中的决策。</p><a class="story-card-link" href="/why-stock-trades-lose.html">模拟炒股为什么亏钱 <span aria-hidden="true">→</span></a></article>
-        <article><p class="eyebrow">04 / FIELD STORIES</p><h3><a href="/money-basics-for-kids.html">小孩子也要懂的金融知识：从种菜理解成本、利润和风险</a></h3><p>用田野之间的种菜与经营例子，和孩子一起认识成本、收入、利润、预算、股份与风险。从游戏金币出发，提出简单问题，理解每次选择的代价。</p><a class="story-card-link" href="/money-basics-for-kids.html">孩子也能懂的金融知识 <span aria-hidden="true">→</span></a></article></div>
+      <div class="section-heading"><div><p class="eyebrow">PLAY · BUILD · UNDERSTAND</p><h2 id="stories-title">好玩又奇特的游戏，<br>从种田聊到经营。</h2></div><p>想轻松种菜，还是好奇农场如何上市？<br>沿着你的问题，认识 SUPUZZ 田园。</p></div>
+      <div class="story-cards"><article><p class="eyebrow">01 / FIELD STORIES</p><h3><a href="/farming-game.html">好玩又奇特的种田游戏：从一块菜田到上市农场</a></h3><p>想找好玩又奇特的种田游戏？SUPUZZ 田园把种菜、捕鱼、村庄建造和后期上市模拟放进同一座农场，了解新手经营路线和网页版玩法。</p><a class="story-card-link" href="/farming-game.html">种田游戏怎么玩 <span aria-hidden="true">→</span></a></article>
+        <article><p class="eyebrow">02 / FIELD STORIES</p><h3><a href="/farm-ipo.html">农场上市模拟游戏：从种田经营到融资上市</a></h3><p>SUPUZZ 田园农场上市模拟玩法：种田积累金币，达到 10 亿 G 解锁资本市场，理解上市融资、增发、回购与经营利润的区别。</p><a class="story-card-link" href="/farm-ipo.html">农场上市模拟 <span aria-hidden="true">→</span></a></article>
+        <article><p class="eyebrow">03 / FIELD STORIES</p><h3><a href="/why-stock-trades-lose.html">为啥炒股总是亏钱？用模拟游戏看懂交易成本与波动</a></h3><p>为啥炒股总是亏钱？从 SUPUZZ 田园的虚构股票交易出发，用简单例子理解交易费用、涨跌幅、追涨与持仓盈亏，学习复盘游戏中的决策。</p><a class="story-card-link" href="/why-stock-trades-lose.html">模拟炒股为什么亏钱 <span aria-hidden="true">→</span></a></article>
+        <article><p class="eyebrow">04 / FIELD STORIES</p><h3><a href="/money-basics-for-kids.html">小孩子也要懂的金融知识：从种菜理解成本、利润和风险</a></h3><p>用 SUPUZZ 田园的种菜与经营例子，和孩子一起认识成本、收入、利润、预算、股份与风险。从游戏金币出发，提出简单问题，理解每次选择的代价。</p><a class="story-card-link" href="/money-basics-for-kids.html">孩子也能懂的金融知识 <span aria-hidden="true">→</span></a></article></div>
     </section>
-    <section class="invitation wrap" id="download"><div class="invitation-copy"><p class="eyebrow">A LITTLE TIME FOR YOURSELF</p><h2>田野已经准备好了。<br>就等你来。</h2><p>随手打开网页版，或把这片田野装进口袋。</p><div class="actions"><a class="button primary" href="https://game.supuzz.cn/downloads/latest.apk" download data-game-event="apk_download" aria-disabled="true" tabindex="-1">下载 Android APK <span aria-hidden="true">↓</span></a><a class="button secondary" href="https://game.supuzz.cn/play/?lang=zh-CN" data-game-event="web_launch" aria-disabled="true" tabindex="-1">在线开始 <span aria-hidden="true">↗</span></a></div><a class="checksum" href="https://game.supuzz.cn/downloads/latest.apk.sha256">查看 APK 的 SHA-256 校验值</a></div><div class="invitation-art" aria-hidden="true"><img src="/assets/icon.svg" alt="" width="190" height="190"><span>make room for slow days.</span></div></section>
+    <section class="invitation wrap" id="download"><div class="invitation-copy"><p class="eyebrow">A LITTLE TIME FOR YOURSELF</p><h2>你的小小世界已经准备好了。<br>就等你来。</h2><p>随手打开网页版，或把这片小田园装进口袋。</p><div class="actions"><a class="button primary" href="https://game.supuzz.cn/downloads/latest.apk" download data-game-event="apk_download" aria-disabled="true" tabindex="-1">下载 Android APK <span aria-hidden="true">↓</span></a><a class="button secondary" href="https://game.supuzz.cn/play/?lang=zh-CN" data-game-event="web_launch" aria-disabled="true" tabindex="-1">在线开始 <span aria-hidden="true">↗</span></a></div><a class="checksum" href="https://game.supuzz.cn/downloads/latest.apk.sha256">查看 APK 的 SHA-256 校验值</a></div><div class="invitation-art" aria-hidden="true"><img src="/assets/icon.svg" alt="" width="190" height="190"><span>make room for slow days.</span></div></section>
     <section class="faq wrap" id="questions"><div><p class="eyebrow">BEFORE YOU START</p><h2>出发前，<br>你可能想知道。</h2></div><div class="faq-items">
       <details><summary>Android 和网页版有什么区别？</summary><p>游戏玩法相同。Android 安装后可以离线游玩，建议横屏体验；网页版无需安装，首次打开需要联网加载，浏览器需支持 WebGL。两者使用各自的本机存档，暂不支持互相同步。</p></details>
       <details><summary>进度会自动保存吗？</summary><p>会。游戏会在重要操作和离开页面时自动保存，保留主存档与备用存档。请使用同一浏览器和设备继续游玩；清除浏览器数据、卸载应用可能移除存档。</p></details>
@@ -134,7 +140,7 @@
       <details><summary>怎样操作这片农场？</summary><p>点击农田、建筑和地图边界安排工作。电脑拖动旋转，滚轮缩放，右键拖动平移；手机单指旋转，双指平移与缩放。游戏内的说明按钮可以随时查看帮助。</p></details>
     </div></section>
   </main>
-  <footer class="wrap"><a class="brand" href="/"><img src="/assets/icon.svg" alt="" width="28" height="28"><span>田野之间<small>LITTLE FIELD</small></span></a><p>留一点时间，给慢慢生长的生活。</p><div><a href="/guide.html">田园图鉴</a><a href="/privacy.html">隐私说明</a><span>© 2026 SUPUZZ</span></div></footer>
+  <footer class="wrap"><a class="brand" href="/"><img src="/assets/icon.svg" alt="" width="28" height="28"><span>SUPUZZ 田园<small>SUPUZZ GARDEN</small></span></a><p>留一点时间，给慢慢生长的生活。</p><div><a href="/guide.html">田园图鉴</a><a href="/privacy.html">隐私说明</a><span>© 2026 SUPUZZ</span></div></footer>
   <div class="mobile-download"><a href="https://game.supuzz.cn/downloads/latest.apk" class="button primary" download data-game-event="apk_download" aria-disabled="true" tabindex="-1">下载 Android</a><a href="https://game.supuzz.cn/play/?lang=zh-CN" class="button secondary" data-game-event="web_launch" aria-disabled="true" tabindex="-1">网页版 ↗</a></div>
 </body>
 </html>

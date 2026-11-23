@@ -2,6 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /downloads/
-Disallow: /privacy.html
-Disallow: /en/privacy.html
+# privacy.html 不收录靠页面里的 noindex；这里不要 Disallow，
+# 否则 Google 抓不到 noindex，反而可能只收录一个空 URL。
 Sitemap: https://game.supuzz.com/sitemap.xml

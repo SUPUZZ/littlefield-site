@@ -1,2 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://game.supuzz.com/</loc><xhtml:link rel="alternate" hreflang="zh-CN" href="https://game.supuzz.com/"/><xhtml:link rel="alternate" hreflang="en" href="https://game.supuzz.com/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://game.supuzz.com/"/></url><url><loc>https://game.supuzz.com/guide.html</loc><xhtml:link rel="alternate" hreflang="zh-CN" href="https://game.supuzz.com/guide.html"/><xhtml:link rel="alternate" hreflang="en" href="https://game.supuzz.com/en/guide.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://game.supuzz.com/guide.html"/></url><url><loc>https://game.supuzz.com/en/</loc><xhtml:link rel="alternate" hreflang="zh-CN" href="https://game.supuzz.com/"/><xhtml:link rel="alternate" hreflang="en" href="https://game.supuzz.com/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://game.supuzz.com/"/></url><url><loc>https://game.supuzz.com/en/guide.html</loc><xhtml:link rel="alternate" hreflang="zh-CN" href="https://game.supuzz.com/guide.html"/><xhtml:link rel="alternate" hreflang="en" href="https://game.supuzz.com/en/guide.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://game.supuzz.com/guide.html"/></url><url><loc>https://game.supuzz.cn/play/</loc></url><url><loc>https://game.supuzz.com/farming-game.html</loc></url><url><loc>https://game.supuzz.com/farm-ipo.html</loc></url><url><loc>https://game.supuzz.com/why-stock-trades-lose.html</loc></url><url><loc>https://game.supuzz.com/money-basics-for-kids.html</loc></url></urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://game.supuzz.com/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://game.supuzz.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://game.supuzz.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://game.supuzz.com/"/>
+  </url>
+  <url>
+    <loc>https://game.supuzz.com/en/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://game.supuzz.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://game.supuzz.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://game.supuzz.com/"/>
+  </url>
+  <url>
+    <loc>https://game.supuzz.com/guide.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://game.supuzz.com/guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://game.supuzz.com/en/guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://game.supuzz.com/guide.html"/>
+  </url>
+  <url>
+    <loc>https://game.supuzz.com/en/guide.html</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://game.supuzz.com/guide.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://game.supuzz.com/en/guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://game.supuzz.com/guide.html"/>
+  </url>
+  <url>
+    <loc>https://game.supuzz.com/farming-game.html</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
+  <url>
+    <loc>https://game.supuzz.com/farm-ipo.html</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
+  <url>
+    <loc>https://game.supuzz.com/why-stock-trades-lose.html</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
+  <url>
+    <loc>https://game.supuzz.com/money-basics-for-kids.html</loc>
+    <lastmod>2026-11-23</lastmod>
+  </url>
+</urlset>
